@@ -15,11 +15,11 @@ export class UserLoginPage extends Component {
     }
 
     updateUsername(event){
-        this.setState({username: event.target.value});
+        this.setState({username: event.target.username});
     }
 
     updatePassword(event){
-        this.setState({password: event.target.value});       
+        this.setState({password: event.target.password});       
     }
 
     handleSubmit(_) {
@@ -40,12 +40,12 @@ export class UserLoginPage extends Component {
                 <form class="form-inline" onSubmit={this.handleSubmit}>
                     {/* Username */}
                     <label class="sr-only" for="usernameInput">Username</label>
-                    <input type="name" class="form-control mb-2 mr-sm-2" id="usernameInput" placeholder="Username" value={this.state.value} onChange={this.updateUsername}></input>
+                    <input type="name" class="form-control mb-2 mr-sm-2" id="usernameInput" placeholder="Username" value={this.state.username} onChange={this.updateUsername}></input>
 
                     {/* Password */}
                     <label class="sr-only" for="passwordInput">Password</label>
                     <div class="input-group mb-2 mr-sm-2">
-                        <input type="password" class="form-control" id="passwordInput" placeholder="Password" value={this.state.value} onChange={this.updatePassword}></input>
+                        <input type="password" class="form-control" id="passwordInput" placeholder="Password" value={this.state.password} onChange={this.updatePassword}></input>
                     </div>
 
                     <button type="submit" class="btn btn-primary mb-2">Login</button>
