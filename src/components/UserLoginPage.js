@@ -15,11 +15,11 @@ export class UserLoginPage extends Component {
     }
 
     updateUsername(event){
-        this.setState({username: event.target.username});
+        this.setState({username: event.target.value});
     }
 
     updatePassword(event){
-        this.setState({password: event.target.password});       
+        this.setState({password: event.target.value});       
     }
 
     handleSubmit(_) {
