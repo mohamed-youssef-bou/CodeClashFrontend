@@ -1,84 +1,90 @@
-import React, { Component, useRef} from "react";
-
+import React, { Component, useRef } from "react";
+import "./UpdateUserPage.css";
 
 export class UpdateUserPage extends Component {
-    state = {
-        email = '',
-        username = '',
-        password = ''
-    }
+  constructor(props) {
+    super(props);
+    this.state = { newUsername: "", newPassword: "", isUpdatingPassword: false };
 
-    //Refs
-    oldPasswordRef = useRef()
-    newPasswordRef = useRef()
-    newUsernameRef = useRef()
-    passwordRef = useRef()
-    changePasswordContainerRef = useRef()
-    changeUsernameContainerRef = useRef()
+    //functions
+    this.updatePassword = this.updatePassword.bind(this);
+    this.updateUsername = this.updateUsername.bind(this);
+    this.setToUpdatePassword = this.setToUpdatePassword.bind(this);
+    this.setToUpdateUsername = this.setToUpdateUsername.bind(this);
+    this.handleSubmitPassword = this.handleSubmitPassword.bind(this);
+    this.handleSubmitUsername = this.handleSubmitUsername.bind(this);
+  }
 
-    //need to know if user wants to update 
-    //password or username
-    updateUsername = false;
-    
-    divNoneStyle = {
-        display: none
-    }
-    divStyle = {
-        display: flex
-    }
+  setToUpdatePassword() {
+      this.setState({isUpdatingPassword: true})
+  }
 
-    setToUpdatePassword () {
-        this.updateUsername = false;
-        //CHANGE STYLE OF DIV
-        changeUsernameContainerRef.current.style = this.divNoneStyle
-        changePasswordContainerRef.current.style = this.divStyle
-    }
+  setToUpdateUsername() {
+      this.setState({isUpdatingPassword: false})
+  }
 
-    setToUpdateUsername () {
-        this.updateUsername = true;
-        changePasswordContainerRef.current.style = this.divNoneStyle
-        changeUsernameContainerRef.current.style = this.divStyle
-    }
+  updatePassword(event) {
+    this.setState({ newPassword: event.target.value });
+    console.log(event.target.value);
+  }
+  updateUsername(event) {
+    this.setState({ newUsername: event.target.value });
+  }
 
-    callAPI() {
-        if(!this.updateUsername){
-            oldPassword = oldPasswordRef.current
-            newPassword = newPasswordRef.current
-            //TODO perform put API call
-        } else {
-            password = passwordRef.current
-            newUsername = newUsernameRef.current
-            //TODO perform put API call
-        }
-        
-    }
+  handleSubmitPassword() {
+    //TODO perform put API call
+  }
 
-    componentDidMount() {
-        this.callAPI();
-    }
+  handleSubmitUsername() {
+    //TODO perform put API call
+  }
 
-    render() {
-        return (
-            <div id="container" class="container">
-                <div class="buttonWrapper">
-                    <button class="passwordButton" onClick={setToUpdatePassword}>Change Password</button>
-                    <button class="usernameButton" onClick={setToUpdateUsername}>Change Username</button>
-                </div>
-                <div class="changePasswordContainer" ref={changePasswordContainerRef}>
-                    <label>Old Password</label>
-                    <input type='text' id='oldPasswordInput' ref={oldPasswordRef}>testing</input>
-                    <label>New Password</label>
-                    <input type='text' id='newPasswordInput' ref={newPasswordRef}></input>
-                    <button id='passwordUpdateButton' class='updateButton'>Update</button>
-                </div>
-                <div class="changeUsernameContainer" ref={changeUsernameContainerRef}>
-                    <label>New Username</label>
-                    <input type='text' id='newUsernameInput' ref={newUsernameRef}>testing</input>
-                    <label>Password</label>
-                    <input type='text' id='passwordInput' ref={passwordRef}></input>
-                    <button id='usernameUpdateButton' class='updateButton'>Update</button>
-                </div>
-            </div>
-        )
-    }
+  render() {
+    return (
+      <div id="container" class="container">
+        <h1> Update User Information</h1>
+        <div class="buttonWrapper">
+          <button class="passwordButton" onClick={this.setToUpdatePassword}>
+            Change Password
+          </button>
+          <button class="usernameButton" onClick={this.setToUpdateUsername}>
+            Change Username
+          </button>
+        </div>
+        <div class="fieldContainer">
+          <div class={this.state.isUpdatingPassword ? "changePasswordContainer": 'hide'}>
+            <label>Old Password</label>
+            <input type="password" id="oldPasswordInput"></input>
+            <label>New Password</label>
+            <input
+              type="text"
+              id="newPasswordInput"
+              value={this.state.newPassword}
+              onChange={this.updatePassword}
+            ></input>
+            <button id="passwordUpdateButton" class="updateButton">
+              Update
+            </button>
+          </div>
+
+          <div class={this.state.isUpdatingPassword ? "hide": "changeUsernameContainer"}>
+            <label>New Username</label>
+            <input
+              type="text"
+              id="newUsernameInput"
+              value={this.state.Username}
+              onChange={this.updateUsername}
+            ></input>
+            <label>Password</label>
+            <input type="password" id="passwordInput"></input>
+            <button id="usernameUpdateButton" class="updateButton">
+              Update
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
 }
+
+export default UpdateUserPage;
