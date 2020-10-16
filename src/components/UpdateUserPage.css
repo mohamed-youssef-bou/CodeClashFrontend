@@ -2,6 +2,7 @@ h1 {
     color: white;
     font-size: 2.75rem;
 }
+
 label {
     font-size: 1.75rem;
     color: rgba(255, 255, 255, 0.944);
@@ -47,26 +48,6 @@ button:hover {
 }
 
 .fieldContainer {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr;
-    gap: 120px;
-}
-
-.changePasswordContainer, .changeUsernameContainer {
     display: flex;
     flex-direction: column;
 }
-
-.changePasswordContainer {
-    grid-column: 1 / 2;
-}
-
-.changeUsernameContainer {
-    grid-column: 2 / 3;
-}
-
-.hide {
-    display: none;
-}
-
