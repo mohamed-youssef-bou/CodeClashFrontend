@@ -24,6 +24,13 @@ button:hover {
     color: rgba(255, 255, 255, 0.944);
 }
 
+.returnButton {
+    display: inline;
+    position: absolute;
+    left: 4.5%;
+    top: 4.5%;
+}
+
 .passwordButton, .usernameButton {
     margin-left: 50px;
     margin-right: 50px;

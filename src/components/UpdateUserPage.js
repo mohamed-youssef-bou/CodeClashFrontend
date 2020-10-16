@@ -13,6 +13,7 @@ export class UpdateUserPage extends Component {
     this.setToUpdateUsername = this.setToUpdateUsername.bind(this);
     this.handleSubmitPassword = this.handleSubmitPassword.bind(this);
     this.handleSubmitUsername = this.handleSubmitUsername.bind(this);
+    this.handleReturn = this.handleReturn.bind(this)
   }
 
   setToUpdatePassword() {
@@ -39,9 +40,14 @@ export class UpdateUserPage extends Component {
     //TODO perform put API call
   }
 
+  handleReturn() {
+    //TODO perform return to base page
+  }
+
   render() {
     return (
       <div id="container" class="container">
+        <button class="returnButton" onClick={this.handleReturn}>Return</button>
         <h1> Update User Information</h1>
         <div class="buttonWrapper">
           <button class="passwordButton" onClick={this.setToUpdatePassword}>
