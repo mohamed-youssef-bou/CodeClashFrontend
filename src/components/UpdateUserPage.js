@@ -43,20 +43,19 @@ export class UpdateUserPage extends Component {
         <label>New Username</label>
           <input
             type="text"
-            id="newUsernameInput"
             value={this.state.Username}
             onChange={this.updateUsername}
           ></input>
           <label>New Password</label>
           <input
             type="text"
-            id="newPasswordInput"
             value={this.state.newPassword}
             onChange={this.updatePassword}
           ></input>
           <button class="updateButton" onClick={this.handleSubmit}>
             Update
           </button>
+          <p class="errorMessage">error message will go here</p>
         </div>
       </div>
     );
