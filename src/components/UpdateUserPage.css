@@ -26,7 +26,6 @@ button:hover {
 }
 
 .errorMessage {
-    display: none;
     color: red;
 }
 

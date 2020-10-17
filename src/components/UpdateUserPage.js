@@ -18,18 +18,30 @@ export class UpdateUserPage extends Component {
 
   updatePassword(event) {
     this.setState({ newPassword: event.target.value });
-    console.log(event.target.value);
   }
   updateUsername(event) {
     this.setState({ newUsername: event.target.value });
   }
 
   handleSubmit() {
-    //TODO perform put API call
+
+    let data = {
+      "user_id": "RANDOM USER ID TO FIX LATER",
+      "new_username": this.state.newUsername,
+      "new_password": this.state.newPassword
+    }
+
+    fetch("http://localhost:9000/updateUser", {
+      method: "PUT",
+      body: JSON.stringify(data)
+    })
+    .then(res => console.log(res))
+    .catch(err => err)
+    //set error text to display
   }
 
   handleReturn() {
-    //TODO perform return to base page
+    //TODO perform navigation to base page
   }
 
   render() {
@@ -43,7 +55,7 @@ export class UpdateUserPage extends Component {
         <label>New Username</label>
           <input
             type="text"
-            value={this.state.Username}
+            value={this.state.newUsername}
             onChange={this.updateUsername}
           ></input>
           <label>New Password</label>
@@ -55,7 +67,7 @@ export class UpdateUserPage extends Component {
           <button class="updateButton" onClick={this.handleSubmit}>
             Update
           </button>
-          <p class="errorMessage">error message will go here</p>
+          <p class="errorMessage"></p>
         </div>
       </div>
     );
