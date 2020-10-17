@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./UpdateUserPage.css";
+import { Redirect } from 'react-router-dom';
 
 export class UpdateUserPage extends Component {
   constructor(props) {
@@ -7,12 +8,13 @@ export class UpdateUserPage extends Component {
     this.state = {
       newUsername: "",
       newPassword: "",
+      isRedirect: false,
     };
 
     //functions
     this.updatePassword = this.updatePassword.bind(this);
     this.updateUsername = this.updateUsername.bind(this);
-    this.handleSubmitUsername = this.handleSubmit.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
     this.handleReturn = this.handleReturn.bind(this);
   }
 
@@ -25,11 +27,13 @@ export class UpdateUserPage extends Component {
 
   handleSubmit() {
 
+    console.log(this.state);
+
     let data = {
-      "user_id": "RANDOM USER ID TO FIX LATER",
-      "new_username": this.state.newUsername,
-      "new_password": this.state.newPassword
-    }
+      'user_id': "RANDOM USER ID TO FIX LATER",
+      'new_username': this.state.newUsername,
+      'new_password': this.state.newPassword,
+    };
 
     fetch("http://localhost:9000/updateUser", {
       method: "PUT",
@@ -41,10 +45,17 @@ export class UpdateUserPage extends Component {
   }
 
   handleReturn() {
-    //TODO perform navigation to base page
+    //use Redirect from react-router-dom
+    this.setState({ isRedirect: true });
+    
   }
 
   render() {
+    if( this.state.isRedirect) {
+      return <Redirect to="/landing_page" />
+      //NEED TO ADD PAGE IN THE ROUTES OF APP.JS
+    }
+
     return (
       <div id="container" class="container">
         <button class="returnButton" onClick={this.handleReturn}>
