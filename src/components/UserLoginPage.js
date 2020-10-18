@@ -42,11 +42,11 @@ export class UserLoginPage extends Component {
         }) // Login with body parameters: username and password
         .then((res) => {
             if(res.status === 201){
-                this.setState({navReady: true})
-                console.log(res.json());    
+                this.setState({navReady: true})   
             }})
-            .then(data => localStorage["token"] = data["token"])
-            .catch(err => console.log(err));
+        .then(res => res.json())
+        .then(data => localStorage["token"] = data["token"])
+        .catch(err => err);
     }
 
     render() {

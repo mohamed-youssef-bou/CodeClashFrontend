@@ -48,10 +48,10 @@ export class UserCreateAccountPage extends Component {
             }) // Login with body parameters: username, email and password
             .then((res) => {
                 if(res.status === 201){
-                    this.setState({navReady: true})
-                    res.json();    
+                    this.setState({navReady: true})   
                 }})
-            .then(data => localStorage["token"] = data)
+            .then(res => res.json())
+            .then(data => localStorage["token"] = data["token"])
             .catch(err => err);
         }
     
