@@ -8,7 +8,8 @@ export class UserLandingPage extends Component {
         username: '',
         score: 0,
         challengesCreated: [],
-        submissions: []
+        submissions: [],
+        navReady: false
     }
 
     callAPI() {
@@ -26,11 +27,37 @@ export class UserLandingPage extends Component {
             });
     }
 
+    deleteAccount = () => {
+        console.log("delete account pressed");
+        fetch(`http://localhost:9000/deleteUser`, {
+            method: 'POST',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: {
+                // "user_id": [user_id], // TODO: insert user_id here,
+                // "password": [password] // TODO: insert password here 
+            }
+        }).then(res => {
+            console.log("delete request success");
+
+            if(res.status === 201) {
+                this.setState({navReady: true})
+            }
+        }).catch(error => {
+            console.log(error);
+        }) 
+    }
+
     componentDidMount() {
         this.callAPI();
     }
 
     render() {
+        // if(this.state.navReady) {
+        //     return <Redirect to='/create_account'/>
+        // }
         return (
             <div id="userInformation">
                 <h2>CodeClash</h2>
@@ -39,6 +66,7 @@ export class UserLandingPage extends Component {
                 <p>Score: {this.state.score}</p>
                 <p>My Challenges: { this.state.challengesCreated.map(challenge => <li>{challenge.name}</li>)}</p>
                 <p>My Challenge Submissions: { this.state.submissions.map(submission => <li>{submission.name}</li>)}</p>
+                <button class="delAccount" onclick={this.deleteAccount}>Delete Account</button>
             </div>
         );
     }

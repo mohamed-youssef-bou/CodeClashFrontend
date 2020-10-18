@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import logo from "./logo.svg";
 import "./App.css";
+import UserLoginPage from "./components/UserLoginPage";
+import { BrowserRouter as Router, Link, Switch, Route } from "react-router-dom";
+import UserLandingPage from './components/UserLandingPage'
 
 class App extends Component {
     constructor(props) {
