@@ -65,17 +65,17 @@ export class UserCreateAccountPage extends Component {
             <div id="loginForm">
                 <form className="form-inline" onSubmit={this.handleSubmit}>
                     {/* Username */}
-                    <label className="sr-only" for="usernameInput">Username</label>
+                    <label className="sr-only" htmlFor="usernameInput">Username</label>
                     <input type="name" className="form-control mb-2 mr-sm-2" id="usernameInput" placeholder="Username" value={this.state.username} onChange={this.updateUsername}></input>
 
                     {/* Email */}
-                    <label className="sr-only" for="emailInput">Email</label>
+                    <label className="sr-only" htmlFor="emailInput">Email</label>
                     <div className="input-group mb-2 mr-sm-2">
                         <input type="email" className="form-control" id="emailInput" placeholder="Email" value={this.state.email} onChange={this.updateEmail}></input>
                     </div>
 
                     {/* Password */}
-                    <label className="sr-only" for="passwordInput">Password</label>
+                    <label className="sr-only" htmlFor="passwordInput">Password</label>
                     <div className="input-group mb-2 mr-sm-2">
                         <input type="password" className="form-control" id="passwordInput" placeholder="Password" value={this.state.password} onChange={this.updatePassword}></input>
                     </div>

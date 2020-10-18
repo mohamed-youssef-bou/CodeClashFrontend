@@ -3,7 +3,6 @@ import logo from "./logo.svg";
 import "./App.css";
 import { BrowserRouter as Router, Link, Switch, Route } from "react-router-dom";
 import UserLandingPage from './components/UserLandingPage.js';
-import Home from './components/home.js';
 import UserCreateAccountPage from "./components/UserCreateAccountPage";
 import UserLoginPage from "./components/UserLoginPage";
 
