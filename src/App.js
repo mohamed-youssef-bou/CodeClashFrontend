@@ -1,11 +1,10 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import { BrowserRouter as Router, Link, Switch, Route } from "react-router-dom";
 import UserLandingPage from './components/UserLandingPage';
 import UserCreateAccountPage from "./components/UserCreateAccountPage";
 import UserLoginPage from "./components/UserLoginPage";
-import UpdateUserPage from "./components/UpdateUserPage.js";
+import UpdateUserPage from "./components/UpdateUserPage";
 
 class App extends Component {
     constructor(props) {
