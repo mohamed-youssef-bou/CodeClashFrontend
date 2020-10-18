@@ -46,7 +46,12 @@ export class UserCreateAccountPage extends Component {
                 },
                 body: JSON.stringify(data)
             }) // Login with body parameters: username, email and password
-            .then((res) => res.json())
+            .then((res) => {
+                if(res.status === 201){
+                    this.setState({navReady: true})   
+                }
+                return res.json();
+            })
             .then(data => localStorage["token"] = data["token"])
             .catch(err => err);
         }
@@ -54,9 +59,9 @@ export class UserCreateAccountPage extends Component {
 
 
     render() {
-        // if (this.state.navReady) {
-        //     return <Redirect to='/landing_page' />
-        //   }
+        if (this.state.navReady) {
+            return <Redirect to='/landing_page' />
+          }
         return (
             <div id="loginForm">
                 <form className="form-inline" onSubmit={this.handleSubmit}>
