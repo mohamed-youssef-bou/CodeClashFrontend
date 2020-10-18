@@ -43,7 +43,9 @@ export class UserLoginPage extends Component {
         .then((res) => {
             if(res.status === 200){
                 this.setState({navReady: true})   
-            }})
+            }
+            return res;
+        })
         .then(res => res.json())
         .then(data => localStorage["token"] = data["token"])
         .catch(err => err);
