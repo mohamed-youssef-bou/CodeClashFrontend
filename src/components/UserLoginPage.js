@@ -1,13 +1,15 @@
 import React, { Component } from "react";
 import 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Redirect } from 'react-router-dom';
+
 
 
 export class UserLoginPage extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {username: '', password: ''};
+        this.state = {username: '', password: '', navReady: false};
 
         this.updateUsername = this.updateUsername.bind(this);
         this.updatePassword = this.updatePassword.bind(this);
@@ -38,12 +40,19 @@ export class UserLoginPage extends Component {
             },
             body: JSON.stringify(data)
         }) // Login with body parameters: username and password
-            .then(res => res.json())
+        .then((res) => {
+            if(res.status === 201){
+                this.setState({navReady: true})
+                console.log(res.json());    
+            }})
             .then(data => localStorage["token"] = data["token"])
             .catch(err => console.log(err));
     }
 
     render() {
+        if (this.state.navReady) {
+            return <Redirect to='/landing_page' />
+          }
         return (
             <div id="loginForm">
                 <form className="form-inline" onSubmit={this.handleSubmit}>
