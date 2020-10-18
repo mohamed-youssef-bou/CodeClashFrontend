@@ -28,7 +28,6 @@ class App extends Component {
               </nav>
               <hr />
               <Switch>
-                  <Route exact path='/' component={Home} />
                   <Route path='/create_account' component={UserCreateAccountPage} />
                   <Route path='/login' component={UserLoginPage} />                  
                   <Route path='/landing_page' component={UserLandingPage} />

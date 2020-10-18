@@ -45,16 +45,14 @@ export class UserCreateAccountPage extends Component {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(data)
-            }) // Login with body parameters: username and password
+            }) // Login with body parameters: username, email and password
             .then((res) => {
                 if(res.status === 201){
                     this.setState({navReady: true})
-                    console.log(res.json());    
+                    res.json();    
                 }})
-                .then(data => localStorage["token"] = data)
-                
-                // .then(this.setState({navReady: true}))
-                .catch(err => err);
+            .then(data => localStorage["token"] = data)
+            .catch(err => err);
         }
     
 
@@ -65,27 +63,27 @@ export class UserCreateAccountPage extends Component {
           }
         return (
             <div id="loginForm">
-                <form class="form-inline" onSubmit={this.handleSubmit}>
+                <form className="form-inline" onSubmit={this.handleSubmit}>
                     {/* Username */}
-                    <label class="sr-only" for="usernameInput">Username</label>
-                    <input type="name" class="form-control mb-2 mr-sm-2" id="usernameInput" placeholder="Username" value={this.state.username} onChange={this.updateUsername}></input>
+                    <label className="sr-only" for="usernameInput">Username</label>
+                    <input type="name" className="form-control mb-2 mr-sm-2" id="usernameInput" placeholder="Username" value={this.state.username} onChange={this.updateUsername}></input>
 
                     {/* Email */}
-                    <label class="sr-only" for="emailInput">Email</label>
-                    <div class="input-group mb-2 mr-sm-2">
-                        <input type="email" class="form-control" id="emailInput" placeholder="Email" value={this.state.email} onChange={this.updateEmail}></input>
+                    <label className="sr-only" for="emailInput">Email</label>
+                    <div className="input-group mb-2 mr-sm-2">
+                        <input type="email" className="form-control" id="emailInput" placeholder="Email" value={this.state.email} onChange={this.updateEmail}></input>
                     </div>
 
                     {/* Password */}
-                    <label class="sr-only" for="passwordInput">Password</label>
-                    <div class="input-group mb-2 mr-sm-2">
-                        <input type="password" class="form-control" id="passwordInput" placeholder="Password" value={this.state.password} onChange={this.updatePassword}></input>
+                    <label className="sr-only" for="passwordInput">Password</label>
+                    <div className="input-group mb-2 mr-sm-2">
+                        <input type="password" className="form-control" id="passwordInput" placeholder="Password" value={this.state.password} onChange={this.updatePassword}></input>
                     </div>
 
-                    <button type="submit" class="btn btn-primary mb-2">Create Account</button>
+                    <button type="submit" className="btn btn-primary mb-2">Create Account</button>
 
                 </form>
-                {/* <button type="navigate" class="btn btn-primary mb-2" onPressed={() => this.navLandingPage}>Landing Page </button> */}
+                {/* <button type="navigate" className="btn btn-primary mb-2" onPressed={() => this.navLandingPage}>Landing Page </button> */}
 
             </div>
 
