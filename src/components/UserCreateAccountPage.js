@@ -31,14 +31,13 @@ export class UserCreateAccountPage extends Component {
 
         handleSubmit(event) {
             event.preventDefault()
-            alert('Username is: ' + this.state.username + ' | Password is: ' + this.state.password);
             let data = {
                 'username': this.state.username,
                 'email': this.state.email,
                 'password': this.state.password
                   
               };
-            console.log(JSON.stringify(data))
+
             fetch(`/createUser`, {
                 method: 'POST',
                 headers: {
@@ -62,7 +61,7 @@ export class UserCreateAccountPage extends Component {
             return <Redirect to='/login' />
           }
         return (
-            <div id="loginForm">
+            <div id="createUserForm">
                 <form className="form-inline" onSubmit={this.handleSubmit}>
                     {/* Username */}
                     <label className="sr-only" htmlFor="usernameInput">Username</label>
