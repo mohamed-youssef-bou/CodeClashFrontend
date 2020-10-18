@@ -27,8 +27,6 @@ export class UpdateUserPage extends Component {
 
   handleSubmit() {
 
-    console.log(this.state);
-
     let data = {
       'user_id': "RANDOM USER ID TO FIX LATER",
       'new_username': this.state.newUsername,
@@ -40,7 +38,7 @@ export class UpdateUserPage extends Component {
       body: JSON.stringify(data)
     })
     .then(res => console.log(res))
-    .catch(err => err)
+    .catch(err => console.log(err))
     //set error text to display
   }
 
