@@ -8,7 +8,7 @@ export class UserLoginPage extends Component {
     constructor(props) {
         super(props);
         this.state = {username: '', password: ''};
-    
+
         this.updateUsername = this.updateUsername.bind(this);
         this.updatePassword = this.updatePassword.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -19,18 +19,18 @@ export class UserLoginPage extends Component {
     }
 
     updatePassword(event){
-        this.setState({password: event.target.value});       
+        this.setState({password: event.target.value});
     }
 
     handleSubmit(_) {
         alert('Username is: ' + this.state.username + ' | Password is: ' + this.state.password);
-       
+
         fetch(`http://localhost:9000/login`, {
             method: 'POST',
             body: JSON.stringify(this.state)
         }) // Login with body parameters: username and password
-            .then(res => console.log(res))
-            // TODO store JWT token
+            .then(res => res.json())
+            .then(data => localStorage["token"] = data)
             .catch(err => err);
     }
 
