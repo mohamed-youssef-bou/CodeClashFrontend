@@ -41,7 +41,7 @@ export class UserLoginPage extends Component {
             body: JSON.stringify(data)
         }) // Login with body parameters: username and password
         .then((res) => {
-            if(res.status === 201){
+            if(res.status === 200){
                 this.setState({navReady: true})   
             }})
         .then(res => res.json())
