@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./UpdateUserPage.css";
 import { Redirect } from 'react-router-dom';
+import jwt_decode from "jwt-decode";
 
 export class UpdateUserPage extends Component {
   constructor(props) {
@@ -29,13 +30,16 @@ export class UpdateUserPage extends Component {
     event.preventDefault();
 
     let data = {
-      'user_id': "RANDOM USER ID TO FIX LATER",
+      'user_id': jwt_decode(localStorage.getItem("token")).user._id,
       'new_username': this.state.newUsername,
       'new_password': this.state.newPassword,
     };
 
     fetch("/updateUser", {
       method: "PUT",
+      headers: {
+        'Content-Type': 'application/json'
+      },
       body: JSON.stringify(data)
     })
     .then(res => console.log(res))
@@ -46,7 +50,7 @@ export class UpdateUserPage extends Component {
   handleReturn() {
     //use Redirect from react-router-dom
     this.setState({ isRedirect: true });
-    
+
   }
 
   render() {
