@@ -22,33 +22,42 @@ export class UserLoginPage extends Component {
         this.setState({password: event.target.value});
     }
 
-    handleSubmit(_) {
-        alert('Username is: ' + this.state.username + ' | Password is: ' + this.state.password);
+    handleSubmit(event) {
 
-        fetch(`http://localhost:9000/login`, {
+        event.preventDefault();
+
+        let data = {
+            'username': this.state.username,
+            'password': this.state.password
+          };
+
+        fetch(`/login`, {
             method: 'POST',
-            body: JSON.stringify(this.state)
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data)
         }) // Login with body parameters: username and password
             .then(res => res.json())
-            .then(data => localStorage["token"] = data)
-            .catch(err => err);
+            .then(data => localStorage["token"] = data["token"])
+            .catch(err => console.log(err));
     }
 
     render() {
         return (
             <div id="loginForm">
-                <form class="form-inline" onSubmit={this.handleSubmit}>
+                <form className="form-inline" onSubmit={this.handleSubmit}>
                     {/* Username */}
-                    <label class="sr-only" for="usernameInput">Username</label>
-                    <input type="name" class="form-control mb-2 mr-sm-2" id="usernameInput" placeholder="Username" value={this.state.username} onChange={this.updateUsername}></input>
+                    <label className="sr-only" htmlFor="usernameInput">Username</label>
+                    <input type="name" className="form-control mb-2 mr-sm-2" id="usernameInput" placeholder="Username" value={this.state.username} onChange={this.updateUsername}></input>
 
                     {/* Password */}
-                    <label class="sr-only" for="passwordInput">Password</label>
-                    <div class="input-group mb-2 mr-sm-2">
-                        <input type="password" class="form-control" id="passwordInput" placeholder="Password" value={this.state.password} onChange={this.updatePassword}></input>
+                    <label className="sr-only" htmlFor="passwordInput">Password</label>
+                    <div className="input-group mb-2 mr-sm-2">
+                        <input type="password" className="form-control" id="passwordInput" placeholder="Password" value={this.state.password} onChange={this.updatePassword}></input>
                     </div>
 
-                    <button type="submit" class="btn btn-primary mb-2">Login</button>
+                    <button type="submit" className="btn btn-primary mb-2">Login</button>
                 </form>
             </div>
         );

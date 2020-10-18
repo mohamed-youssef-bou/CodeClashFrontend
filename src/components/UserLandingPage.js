@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 
-
-
 export class UserLandingPage extends Component {
     state = {
         email: '',
@@ -13,7 +11,7 @@ export class UserLandingPage extends Component {
     }
 
     callAPI() {
-        fetch(`http://localhost:9000/users/[user_id]`)//TODO add the user id here
+        fetch(`/users/[user_id]`)
             .then(res => res.text())
             .then(res => this.setState({
                 email: res.data.email,
@@ -27,9 +25,10 @@ export class UserLandingPage extends Component {
             });
     }
 
-    deleteAccount = () => {
+    deleteAccount = (event) => {
+        event.preventDefault();
         console.log("delete account pressed");
-        fetch(`http://localhost:9000/deleteUser`, {
+        fetch(`/deleteUser`, {
             method: 'POST',
             mode: 'cors',
             headers: {

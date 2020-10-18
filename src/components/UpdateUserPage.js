@@ -25,7 +25,8 @@ export class UpdateUserPage extends Component {
     this.setState({ newUsername: event.target.value });
   }
 
-  handleSubmit() {
+  handleSubmit(event) {
+    event.preventDefault();
 
     let data = {
       'user_id': "RANDOM USER ID TO FIX LATER",
@@ -33,7 +34,7 @@ export class UpdateUserPage extends Component {
       'new_password': this.state.newPassword,
     };
 
-    fetch("http://localhost:9000/updateUser", {
+    fetch("/updateUser", {
       method: "PUT",
       body: JSON.stringify(data)
     })
