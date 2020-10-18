@@ -33,7 +33,7 @@ export class UserLoginPage extends Component {
             'password': this.state.password
           };
           console.log(JSON.stringify(data));
-        await fetch('http://localhost:9000/login',
+        await fetch('/login',
         {
             method: 'POST',
             headers: {
