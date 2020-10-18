@@ -1,0 +1,52 @@
+h1 {
+    color: white;
+    font-size: 2.75rem;
+}
+
+label {
+    font-size: 1.75rem;
+    color: rgba(255, 255, 255, 0.944);
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+input {
+    margin-bottom: 10px;
+}
+
+button {
+    background-color: orange;
+    border-radius: 25px;
+    font-size: 1.5rem;
+    margin-top: 15px;
+}
+
+button:hover {
+    color: rgba(255, 255, 255, 0.944);
+}
+
+.errorMessage {
+    color: red;
+}
+
+.returnButton {
+    display: inline;
+    position: absolute;
+    left: 4.5%;
+    top: 4.5%;
+}
+
+.container {
+    background-color: rgb(66, 66, 66);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-self: center;
+    height: 100vh;
+    width: 100vw;
+}
+
+.fieldContainer {
+    display: flex;
+    flex-direction: column;
+}
