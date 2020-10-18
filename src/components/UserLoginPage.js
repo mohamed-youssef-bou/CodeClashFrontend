@@ -22,16 +22,18 @@ export class UserLoginPage extends Component {
         this.setState({password: event.target.value});
     }
 
-    handleSubmit(event) {
+    async handleSubmit(event) {
 
         event.preventDefault();
+
+        var isRedirect = false;
 
         let data = {
             'username': this.state.username,
             'password': this.state.password
           };
           console.log(JSON.stringify(data));
-        fetch('http://localhost:9000/login',
+        await fetch('http://localhost:9000/login',
         {
             method: 'POST',
             headers: {
@@ -41,18 +43,20 @@ export class UserLoginPage extends Component {
         }) // Login with body parameters: username and password
             .then((res) => {
                 if(res.status === 200){
-                    this.setState({navReady: true})   
+                    isRedirect = true;  
                 }
                 return res.json();
-            })
-            .then(data => localStorage["token"] = data["token"])
-            .catch(err => console.log(err));
+        })
+        .then(data => localStorage["token"] = data["token"])
+        .catch(err => console.log(err));
+        
+        this.setState({navReady: true}) 
     }
 
     render() {
         if (this.state.navReady) {
             return <Redirect to='/landing_page' />
-          }
+        }
         return (
             <div id="loginForm">
                 <form className="form-inline" onSubmit={this.handleSubmit}>
