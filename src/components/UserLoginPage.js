@@ -3,8 +3,6 @@ import 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Redirect } from 'react-router-dom';
 
-
-
 export class UserLoginPage extends Component {
 
     constructor(props) {
@@ -32,23 +30,23 @@ export class UserLoginPage extends Component {
             'username': this.state.username,
             'password': this.state.password
           };
-
-        fetch(`/login`, {
+          console.log(JSON.stringify(data));
+        fetch('http://localhost:9000/login',
+        {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json',
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify(data)
         }) // Login with body parameters: username and password
-        .then((res) => {
-            if(res.status === 200){
-                this.setState({navReady: true})   
-            }
-            return res;
-        })
-        .then(res => res.json())
-        .then(data => localStorage["token"] = data["token"])
-        .catch(err => err);
+            .then((res) => {
+                if(res.status === 200){
+                    this.setState({navReady: true})   
+                }
+                return res.json();
+            })
+            .then(data => localStorage["token"] = data["token"])
+            .catch(err => console.log(err));
     }
 
     render() {

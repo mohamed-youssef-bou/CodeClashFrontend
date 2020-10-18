@@ -52,7 +52,6 @@ export class UserCreateAccountPage extends Component {
                 }
                 return res.json();
             })
-            .then(data => localStorage["token"] = data["token"])
             .catch(err => err);
         }
     
@@ -60,7 +59,7 @@ export class UserCreateAccountPage extends Component {
 
     render() {
         if (this.state.navReady) {
-            return <Redirect to='/landing_page' />
+            return <Redirect to='/login' />
           }
         return (
             <div id="loginForm">
