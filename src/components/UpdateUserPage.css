@@ -31,9 +31,8 @@ button:hover {
 
 .returnButton {
     display: inline;
-    position: absolute;
-    left: 4.5%;
-    top: 4.5%;
+    position: relative;
+    left: -45%;
 }
 
 .container {
