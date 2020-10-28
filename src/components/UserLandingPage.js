@@ -60,6 +60,8 @@ export class UserLandingPage extends Component {
 
   logout = (event) => {
     event.preventDefault();
+    localStorage["token"] = "";
+    this.setState({ navReady: true });
   };
 
   componentDidMount() {
