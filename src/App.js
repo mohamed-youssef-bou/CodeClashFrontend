@@ -6,6 +6,7 @@ import UserCreateAccountPage from "./components/UserCreateAccountPage";
 import UserLoginPage from "./components/UserLoginPage";
 import UpdateUserPage from "./components/UpdateUserPage";
 import CreateChallengePage from "./components/CreateChallengePage";
+import ListAllChallengesPage from "./components/ListAllChallengesPage";
 
 class App extends Component {
     constructor(props) {
@@ -26,6 +27,7 @@ class App extends Component {
                 <li><Link to={'/create_account'} className="nav-link">Create Account</Link></li>
                 <li><Link to={'/update'} className="nav-link">Update User Info</Link></li>
                 <li><Link to={'/create_challenge'} className="nav-link">Create Challenge</Link></li>
+                <li><Link to={'/challenges'} className="nav-link">View Challenges</Link></li>
               </ul>
               </nav>
               <hr />
@@ -35,6 +37,7 @@ class App extends Component {
                   <Route path='/update' component={UpdateUserPage} />
                   <Route path='/create_account' component={UserCreateAccountPage} />
                   <Route path='/create_challenge' component={CreateChallengePage}></Route>
+                  <Route path='/challenges' component={ListAllChallengesPage}></Route>
               </Switch>
             </div>
           </Router>
