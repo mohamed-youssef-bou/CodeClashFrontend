@@ -15,6 +15,7 @@ const LinkButton = (props) => {
     // ⬆ filtering out props that `button` doesn’t know what to do with.
     ...rest
   } = props
+
   return (
     <button class='btn-style'
       {...rest} // `children` is just another prop!
@@ -23,7 +24,7 @@ const LinkButton = (props) => {
         history.push(to)
       }}
     />
-  )
+  );
 }
 
 LinkButton.propTypes = {
