@@ -50,7 +50,7 @@ export class UserLandingPage extends Component {
       .then((res) => {
         if (res.status === 201) {
           this.setState({ navReady: true });
-          localStorage["token"] = "";
+          localStorage.setItem("token", "");
         }
       })
       .catch((error) => {
@@ -60,7 +60,8 @@ export class UserLandingPage extends Component {
 
   logout = (event) => {
     event.preventDefault();
-    localStorage["token"] = "";
+    localStorage.setItem("token", "");
+    console.log("token " + localStorage.getItem("token"));
     this.setState({ navReady: true });
   };
 
