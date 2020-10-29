@@ -4,11 +4,11 @@
 }
 
 h1 {
-    font-size: 1.30rem;
+    font-size: 1.75rem;
 }
 
 label {
-    font-size: 1.5rem;
+    font-size: 1.45rem;
     margin-top: 20px;
     margin-bottom: 0px;
 }
@@ -23,7 +23,7 @@ input, .emailDiv {
 
 button {
     border-radius: 30px;
-    font-size: 1.5rem;
+    font-size: 1.45rem;
     margin-top: 15px;
 }
 
@@ -40,8 +40,10 @@ button:hover {
 .container {
     background-color: black;
     color: white;
-    /* display: grid;
-    grid-template-columns: 1fr 2fr; */
+}
+
+.logo {
+    /* background-image: url(./assets/logo.png); */
 }
 
 .fieldContainer {
@@ -73,4 +75,5 @@ button:hover {
     height: 100%;
     right: 0px;
     background-color: red;
+    /* background-image: url(./assets/background.png); */
 }
