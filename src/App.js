@@ -23,10 +23,9 @@ class App extends Component {
 
           <section class="container">
           <div class="left-half">
-            <img class="logo" src={require('/Users/maireadmaloney/Documents/ECSE428/ECSE428_G07_Frontend/src/assets/logo.png')}>
+            <img class="logo" src={require('/Users/maireadmaloney/Documents/ECSE428/ECSE428_G07_Frontend/src/assets/logoEdited.png')}>
             </img>
             <div>
-              <h1>Welcome to CodeClash</h1>
               <div>
                 <button class="btn-style"> Login</button>
                 <button class="btn-style">Sign Up</button>

@@ -15,7 +15,7 @@ section {
 }
 
 .btn-style {
-  background-color: #00B8D4; /* Green background */
+  background-color: #3fb4b4; /* Green background */
   border: none;
   color: white; /* White text */
   font: 'roboto';
@@ -39,7 +39,7 @@ div {
 
 
 h1 {
-  font-size: x-large;
+  font-size: 60px;
   align-self: center;
   margin: 0 0 0.75rem 0;
 }
