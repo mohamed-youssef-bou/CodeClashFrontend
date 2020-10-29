@@ -40,13 +40,20 @@ button:hover {
 .container {
     background-color: black;
     color: white;
-    display: grid;
-    grid-template-columns: 1fr 2fr;
+    /* display: grid;
+    grid-template-columns: 1fr 2fr; */
 }
 
 .fieldContainer {
+    background-color: black;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 40%;
+    height: 100%;
+    left: 0px;
 }
 
 .buttonContainer {
@@ -57,4 +64,13 @@ button:hover {
 .returnButton, .updateButton {
     color: white;
     background-color: black;
+    margin: 20px;
+}
+
+.rightBackgroundContainer {
+    position: absolute;
+    width: 60%;
+    height: 100%;
+    right: 0px;
+    background-color: red;
 }
