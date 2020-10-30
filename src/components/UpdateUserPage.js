@@ -84,11 +84,9 @@ export class UpdateUserPage extends Component {
       <div id="container" class="container">
         <div class="fieldContainer">
           <div class="logo">
-            <img className="logo"
-                 src={require('../assets/logoEdited.png')} />
           </div>
           <h1> Update Account Details</h1>
-          <label>New Username</label>
+          <label>Username</label>
           <input
             class="usernameInput"
             type="text"
@@ -96,10 +94,8 @@ export class UpdateUserPage extends Component {
             onChange={this.updateUsername}
           ></input>
           <label>Email Address</label>
-          <div class="emailDiv">
             <input class="emailInput" value={this.state.userEmail} />
-          </div>
-          <label>New Password</label>
+          <label>Password</label>
           <input
             class="passwordInput"
             type="text"
@@ -108,10 +104,18 @@ export class UpdateUserPage extends Component {
           ></input>
           <div class="buttonContainer">
           <button class="updateButton" onClick={this.handleSubmit}>
+          <img className="left arrow"
+                 src={require('../assets/leftArrow.png')} />
             Update
+            <img className="right arrow"
+                 src={require('../assets/rightArrow.png')} />
           </button>
           <button class="returnButton" onClick={this.handleReturn}>
+          <img className="left arrow"
+                 src={require('../assets/leftArrow.png')} />
             Return
+            <img className="right arrow"
+                 src={require('../assets/rightArrow.png')} />
           </button>
           </div>
           <p class="errorMessage"></p>
