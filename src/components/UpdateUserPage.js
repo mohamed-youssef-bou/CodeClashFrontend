@@ -68,7 +68,6 @@ export class UpdateUserPage extends Component {
         .catch((err) => {
           console.log(err);
         });
-
   }
 
   componentDidMount() {
@@ -115,7 +114,7 @@ export class UpdateUserPage extends Component {
             Return
           </button>
           </div>
-          <p class="update"></p>
+          <p class="errorMessage"></p>
         </div>
         <div class="rightBackgroundContainer">
         </div>
