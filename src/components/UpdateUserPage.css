@@ -8,6 +8,56 @@ h1 {
 }
 
 label {
+    font-size: 1.5rem;
+    margin-top: 20px;
+    margin-bottom: 0px;
+}
+
+.emailInput {
+    margin-bottom: 15px;
+    text-align: center;
+    background-color: white;
+    border-radius: 30px;
+    border: 4px solid var(--clr-accent);
+    color: var(--clr-grey);
+}
+
+.usernameInput, .passwordInput {
+    margin-bottom: 15px;
+    text-align: center;
+    background-color: white;
+    border-radius: 30px;
+    border: 4px solid var(--clr-accent);
+    color:black;
+}
+
+input, .emailDiv:active {
+    outline: none;
+}
+
+.updateButton, .returnButton {
+    border-top: none;
+    border-bottom: none;
+    border-right: 3px solid #00BBD4;
+    border-left: 3px solid #00BBD4;
+    font-size: 1.5rem;
+    margin-top: 15px;
+}
+
+.updateButton:hover, .returnButton:hover {
+    color: #00BBD4;
+    background-color: black;
+    border: 3px solid #00BBD4;
+}
+
+.updateButton:active, .returnButton:active {
+    color: aliceblue;
+    background-color: #00BBD4;
+=======
+    font-size: 1.75rem;
+}
+
+label {
     font-size: 1.45rem;
     margin-top: 20px;
     margin-bottom: 0px;
@@ -42,10 +92,6 @@ button:hover {
     color: white;
 }
 
-.logo {
-    /* background-image: url(./assets/logo.png); */
-}
-
 .fieldContainer {
     background-color: black;
     display: flex;
@@ -70,10 +116,10 @@ button:hover {
 }
 
 .rightBackgroundContainer {
+    background: url(../assets/background.png);
+    display: flex;
     position: absolute;
-    width: 60%;
-    height: 100%;
     right: 0px;
-    background-color: red;
-    /* background-image: url(./assets/background.png); */
+    width: 60%;
+    height:100%;
 }

@@ -10,6 +10,7 @@ export class UpdateUserPage extends Component {
       newUsername: "",
       newPassword: "",
       isRedirect: false,
+      userEmail: ""
     };
 
     //functions
@@ -45,11 +46,32 @@ export class UpdateUserPage extends Component {
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
     //set error text to display
+    this.setState({
+      isRedirect: true
+    })
   }
 
   handleReturn() {
     //use Redirect from react-router-dom
     this.setState({ isRedirect: true });
+  }
+
+  getEmail() {
+    const _id = jwt_decode(localStorage.getItem("token")).user._id;
+    fetch("http://localhost:9000/" + _id)
+        .then((res) => res.json())
+        .then((res) =>
+            this.setState({
+              userEmail: res.email
+            })
+        )
+        .catch((err) => {
+          console.log(err);
+        });
+  }
+
+  componentDidMount() {
+    this.getEmail();
   }
 
   render() {
@@ -61,18 +83,25 @@ export class UpdateUserPage extends Component {
     return (
       <div id="container" class="container">
         <div class="fieldContainer">
-          <div class="logo"> insert logo here</div>
+          <div class="logo">
+            <img className="logo"
+                 src={require('../assets/logoEdited.png')} />
+          </div>
           <h1> Update Account Details</h1>
           <label>New Username</label>
           <input
+            class="usernameInput"
             type="text"
             value={this.state.newUsername}
             onChange={this.updateUsername}
           ></input>
           <label>Email Address</label>
-          <div class="emailDiv">get value of user's email here</div>
+          <div class="emailDiv">
+            <input class="emailInput" value={this.state.userEmail} />
+          </div>
           <label>New Password</label>
           <input
+            class="passwordInput"
             type="text"
             value={this.state.newPassword}
             onChange={this.updatePassword}
