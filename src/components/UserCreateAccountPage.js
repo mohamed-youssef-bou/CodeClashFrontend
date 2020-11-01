@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Redirect } from 'react-router-dom';
-import './UserCreateAccount.css'
 
 export class UserCreateAccountPage extends Component {
 
