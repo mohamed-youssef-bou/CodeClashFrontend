@@ -2,10 +2,200 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+html, body {
+  font-family: 'roboto';
+  line-height: 150%;
 }
+
+section {
+  color: #fff;
+  text-align: center;
+
+}
+
+.btn-style {
+  background-color: #3fb4b4; /* Green background */
+  border: none;
+  color: white; /* White text */
+  font: 'roboto';
+  font-size: 50px;
+  padding: 32px 64px;
+  text-align: center;
+  text-decoration: none;
+  display: block; /* Make the buttons appear below each other */
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 30px;
+
+}
+
+div {
+  height: 100%;
+  align-items: center;
+}
+
+
+h1 {
+  font-size: 60px;
+  align-self: center;
+  margin: 0 0 0.75rem 0;
+}
+
+/* Pattern styles */
+
+.container {
+  display: table;
+
+}
+
+.left-half {
+  align-items: center;
+  background-color: #000;
+  position: absolute;
+  width: 30%;
+  height:100%;
+}
+
+.right-half {
+  background: url(./assets/background.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  position: absolute;
+  right: 0px;
+  width: 70%;
+  height:100%;
+
+}
+
+.logo {
+width: 700px;
+height: 700px;
+
+align-self: center;
+
+}
+
+CSS
+
+:root {
+    --clr-accent :  #00BBD4;
+    --clr-grey: #959595;
+}
+
+h1 {
+    font-size: 2.25rem;
+    margin-top: 0px;
+}
+
+.usernameInput, .passwordInput, .emailInput {
+    margin-bottom: 15px;
+    text-align: center;
+    background-color: white;
+    border-radius: 30px;
+    border: 4px solid var(--clr-accent);
+    color:black;
+}
+
+.emailInput {
+    color: var(--clr-grey);
+}
+
+input, .emailDiv:active {
+    outline: none;
+}
+
+button {
+    border-radius: 30px;
+    font-size: 1.75rem;
+    margin-top: 15px;
+    border: none;
+}
+
+button:hover {
+    border: 1px solid var(--clr-accent);
+}
+
+.errorMessage {
+    color: red;
+}
+
+.container-old {
+    background-color: black;
+    color: white;
+}
+
+.fieldContainer {
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 30%;
+    height: 100%;
+    left: 0px;
+}
+
+label {
+    align-self: start;
+    position: relative;
+    left: 30%;
+    font-size: 1.5rem;
+    margin-top: 20px;
+    margin-bottom: 0px;
+}
+
+.logo {
+    display: block;
+    margin-top: 20px;
+    height: 300px;
+    width: 300px;
+    background: url(./assets/logoEdited.png);
+    background-color: red;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.buttonContainer {
+    height: auto;
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    background-color: inherit;
+    display: inline-block;
+
+}
+
+.returnButton, .updateButton {
+    color: white;
+    background-color: black;
+    margin: 5px;
+    padding: 8px 8px;
+}
+
+.arrow {
+    height: 80px;
+    width: auto;
+}
+
+.rightBackgroundContainer {
+    background: url(./assets/background.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    position: absolute;
+    right: 0px;
+    width: 70%;
+    height:100%;
+}
+
+
+
+
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
@@ -13,20 +203,6 @@
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
 
 @keyframes App-logo-spin {
   from {

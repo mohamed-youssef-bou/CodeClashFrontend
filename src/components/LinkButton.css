@@ -1,0 +1,81 @@
+
+  
+  body {
+    font-family: 'roboto';
+    line-height: 150%;
+  }
+  
+  section {
+    color: #fff;
+    text-align: center;
+    height:100%;
+  
+  }
+  
+  .btn-style {
+    background-color: #3fb4b4; /* Green background */
+    border: none;
+    color: white; /* White text */
+    font: 'roboto';
+    font-size: 50px;
+    padding: 32px 64px;
+    text-align: center;
+    text-decoration: none;
+    display: block; /* Make the buttons appear below each other */
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+  
+  }
+
+  .btn-text{
+    color: white;
+    background-color: black;
+    margin: 5px;
+    padding: 8px 8px;
+    font-size: 60px;
+    font: 'roboto';
+  }
+  
+  
+  
+  div {
+    height: 100%;
+    align-items: center;
+  }
+  
+  
+  h1 {
+    font-size: 60px;
+    align-self: center;
+    margin: 0 0 0.75rem 0;
+  }
+  
+  /* Pattern styles */
+  .container {
+    display: table;
+    width: 100%;
+    height:100%;
+  
+  }
+  
+  .left-half {
+    align-items: center;
+    background-color: #000;
+    position: absolute;
+    left: 0px;
+    width: 40%;
+    height:100%;
+  }
+  
+
+  
+  .logo {
+  width: 700px;
+  height: 700px;
+  
+  align-self: center;
+  
+  }
+  
+  

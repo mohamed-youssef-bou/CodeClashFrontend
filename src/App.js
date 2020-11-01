@@ -1,49 +1,71 @@
 import React, { Component } from "react";
+import 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import "./App.css";
-import { BrowserRouter as Router, Link, Switch, Route } from "react-router-dom";
-import UserLandingPage from './components/UserLandingPage';
+import { BrowserRouter as Router, Link, Switch, Route, Redirect } from "react-router-dom";
 import UserCreateAccountPage from "./components/UserCreateAccountPage";
 import UserLoginPage from "./components/UserLoginPage";
-import UpdateUserPage from "./components/UpdateUserPage";
-import CreateChallengePage from "./components/CreateChallengePage";
+import UpdateUserPage from "./components/UpdateUserPage"
+import UserLandingPage from "./components/UserLandingPage"
+import CreateChallengePage from "./components/CreateChallengePage"
+import LinkButton from "./components/LinkButton"
 import ListAllChallengesPage from "./components/ListAllChallengesPage";
 
+
 class App extends Component {
-    constructor(props) {
-        super(props);
-        this.state = { apiResponse: "" };
-    }
+  constructor(props) {
+    super(props);
+    this.state = { apiResponse: "" };
+  }
 
 
-    render() {
-        return (
-            <Router>
-            <div>
-              <h2 style={{textAlign: "center"}}>Welcome to PuzzlR</h2>
-              <nav className="navbar navbar-expand-lg navbar-light bg-light">
-              <ul className="navbar-nav mr-auto">
-                <li><Link to={'/'} className="nav-link"> Home </Link></li>         
-                <li><Link to={'/login'} className="nav-link">Login</Link></li>
-                <li><Link to={'/create_account'} className="nav-link">Create Account</Link></li>
-                <li><Link to={'/update'} className="nav-link">Update User Info</Link></li>
-                <li><Link to={'/create_challenge'} className="nav-link">Create Challenge</Link></li>
-                <li><Link to={'/challenges'} className="nav-link">View Challenges</Link></li>
-              </ul>
-              </nav>
-              <hr />
-              <Switch>
-                  <Route path='/login' component={UserLoginPage} />                  
-                  <Route path='/landing_page' component={UserLandingPage} />
-                  <Route path='/update' component={UpdateUserPage} />
-                  <Route path='/create_account' component={UserCreateAccountPage} />
-                  <Route path='/create_challenge' component={CreateChallengePage}></Route>
-                  <Route path='/challenges' component={ListAllChallengesPage}></Route>
-              </Switch>
-            </div>
-          </Router>
-            
-        );
-    }
+  render() {
+    return (
+      <Router>
+        <Switch>
+          <Route path="/" exact render={() => {
+            return (
+              <div id="container" class="container">
+        <div class="fieldContainer">
+          <div class="logo">
+          </div>
+          <h1> Welcome</h1>
+          <div class="buttonContainer">
+          <LinkButton to='/login'>
+          <img className="left arrow"
+                 src={require('./assets/leftArrow.png')} />
+            Login
+            <img className="right arrow"
+                 src={require('./assets/rightArrow.png')} />
+          </LinkButton>
+
+          <LinkButton to='/create_account'>
+          <img className="left arrow"
+                 src={require('./assets/leftArrow.png')} />
+            Sign Up
+            <img className="right arrow"
+                 src={require('./assets/rightArrow.png')} />
+          </LinkButton>
+          </div>
+        </div>
+        <div class="rightBackgroundContainer">
+        </div>
+      </div>
+            );
+          }} />
+          <Route path='/login' component={UserLoginPage} />
+          <Route path='/create_challenge' component={CreateChallengePage}/>
+          <Route path='/update' component={UpdateUserPage} />
+          <Route path='/landing_page' component={UserLandingPage}/>
+          <Route path='/create_account' component={UserCreateAccountPage} />
+          <Route path='/challenges' component={ListAllChallengesPage}></Route>
+        </Switch>
+      </Router>
+
+
+    );
+  }
+
 }
 
 export default App;
