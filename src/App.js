@@ -5,7 +5,7 @@ import "./App.css";
 import { BrowserRouter as Router, Link, Switch, Route, Redirect } from "react-router-dom";
 import UserCreateAccountPage from "./components/UserCreateAccountPage";
 import UserLoginPage from "./components/UserLoginPage";
-import UserUpdatePage, { UpdateUserPage } from "./components/UpdateUserPage"
+import UpdateUserPage from "./components/UpdateUserPage"
 import UserLandingPage from "./components/UserLandingPage"
 import CreateChallengePage from "./components/CreateChallengePage"
 import LinkButton from "./components/LinkButton"
@@ -23,23 +23,32 @@ class App extends Component {
         <Switch>
           <Route path="/" exact render={() => {
             return (
-              <div class="window">
-                <section class="container">
-                  <div class="left-half">
-                    <img class="logo" src={require('/Users/maireadmaloney/Documents/ECSE428/ECSE428_G07_Frontend/src/assets/logoEdited.png')}>
-                    </img>
-                    <div>
-                      <LinkButton to='/login'>Login</LinkButton>
-                      <LinkButton to='/create_account'>Sign Up</LinkButton>
+              <div id="container" class="container">
+        <div class="fieldContainer">
+          <div class="logo">
+          </div>
+          <h1> Welcome</h1>
+          <div class="buttonContainer">
+          <LinkButton to='/login'>
+          <img className="left arrow"
+                 src={require('./assets/leftArrow.png')} />
+            Login
+            <img className="right arrow"
+                 src={require('./assets/rightArrow.png')} />
+          </LinkButton>
 
-                    </div>
-
-                  </div>
-                  <div class="right-half">
-                  </div>
-
-                </section>
-              </div>
+          <LinkButton to='/create_account'>
+          <img className="left arrow"
+                 src={require('./assets/leftArrow.png')} />
+            Sign Up
+            <img className="right arrow"
+                 src={require('./assets/rightArrow.png')} />
+          </LinkButton>
+          </div>
+        </div>
+        <div class="rightBackgroundContainer">
+        </div>
+      </div>
             );
           }} />
           <Route path='/login' component={UserLoginPage} />
