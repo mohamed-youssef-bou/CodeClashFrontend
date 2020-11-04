@@ -40,7 +40,8 @@
   display: block;
   background-color: var(--clr-grey);
   text-align: center;
-  height: 70vh;
+  margin-top: 70px;
+  margin-bottom: 30px;
   width: 55vw;
   z-index: 10;
 }
@@ -72,4 +73,21 @@
 
 .title::after {
   bottom: -10px;
+}
+
+.challengesList {
+  list-style: none;
+  margin-top: 30px;
+  text-align: center;
+  padding: 0;
+}
+
+.challengesListItem {
+  font-size: 1.3rem;
+  color: black;
+  background-color: white;
+  padding: 10px 20px;
+  margin: 10px 30px;
+  border-radius: 10px;
+  border: 3px solid var(--clr-accent);
 }

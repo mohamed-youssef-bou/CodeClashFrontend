@@ -9,6 +9,14 @@ export class ListAllChallengesPage extends Component {
     };
   }
 
+  //for testing purposes
+  fakeChallengeNames = [
+    "challengeA",
+    "challengeB",
+    "MazeMania",
+    "Couldn't create JS objects",
+    "Angular Memes",
+  ];
   callAPI() {
     fetch("http://localhost:9000/") //insert correct link
       .then((res) => res.json())
@@ -20,6 +28,8 @@ export class ListAllChallengesPage extends Component {
       .catch((err) => {
         console.log(err);
       });
+
+    this.setState({ challenges: this.fakeChallengeNames });
   }
 
   componentDidMount() {
@@ -32,11 +42,14 @@ export class ListAllChallengesPage extends Component {
         <div class="logoChallengesPage"></div>
         <div class="challengesPageSubcontainer">
           <h1 class="title">Available Challenges</h1>
-          <div class="challengesList">
+          <ul class="challengesList">
+            {/* {this.state.challenges.map((challenge) => (
+              <li class="challengesListItem">{challenge.name}</li>
+            ))} */}
             {this.state.challenges.map((challenge) => (
-              <li>{challenge.name}</li>
+              <li class="challengesListItem">{challenge}</li>
             ))}
-          </div>
+          </ul>
         </div>
       </div>
     );
