@@ -1,0 +1,96 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --clr-grey: #353535;
+  --clr-accent: #00bbdd;
+}
+
+.challengesPageContainer {
+  background-color: black;
+  color: white;
+  height: 100vh;
+  width: 100vw;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.logoChallengesPage {
+  position: absolute;
+  top: 0%;
+  right: 0%;
+  display: block;
+  margin-top: 20px;
+  height: 150px;
+  width: 150px;
+  background: url(../assets/logoEdited.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: 1;
+}
+
+.challengesPageSubcontainer {
+  display: block;
+  background-color: var(--clr-grey);
+  text-align: center;
+  margin-top: 70px;
+  margin-bottom: 30px;
+  width: 55vw;
+  z-index: 10;
+}
+
+.title {
+  font-size: 2.5rem;
+  padding-top: 20px;
+  margin: 0px;
+  position: relative;
+  display: block;
+}
+
+.title::before,
+.title::after {
+  position: relative;
+  left: 10%;
+  text-align: center;
+  display: block;
+  content: " ";
+  height: 0px;
+  width: 45vw;
+  border: 1px solid white;
+  background-color: white;
+}
+
+.title::before {
+  top: -10px;
+}
+
+.title::after {
+  bottom: -10px;
+}
+
+.challengesList {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  margin-top: 30px;
+  text-align: center;
+  padding: 0;
+}
+
+.challengesListItem {
+  font-size: 1.3rem;
+  color: black;
+  background-color: white;
+  padding: 10px 20px;
+  margin: 10px 30px;
+  border-radius: 10px;
+  border: 3px solid var(--clr-accent);
+  max-width: 100%;
+}
