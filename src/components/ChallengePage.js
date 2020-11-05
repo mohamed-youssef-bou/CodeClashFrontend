@@ -9,7 +9,7 @@ export class ChallengePage extends Component {
     this.state = {
       challengeId: this.props.location.state.challengeId,//obtained from the redirect in listAllChallengePage
       challengeName: this.props.location.state.challengeName,//remove this in next sprint
-      creatorId: this.props.location.state.creatorId,//remove in next sprint
+      creatorId: '',
       description: '',
       functionSignature: '',
       localTests: [],
@@ -42,7 +42,7 @@ export class ChallengePage extends Component {
 
   deleteChallenge = (event) => {
     event.preventDefault();
-
+    const _id = jwt_decode(localStorage.getItem("token")).user._id;
     let choice = prompt("Are you sure you want to delete this challenge y/n");
 
     if (choice.toLowerCase() === 'y' || choice.toLowerCase() === 'yes') {
@@ -54,7 +54,7 @@ export class ChallengePage extends Component {
         body: {
           'challengeId': this.state.challengeId,
           'challengeName': this.state.challengeName,
-          'author': this.state.creatorId
+          'author': _id
         }
 
       }).then(res => {
