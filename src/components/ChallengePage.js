@@ -79,9 +79,6 @@ export class ChallengePage extends Component {
 
   componentDidMount() {
     //this.callAPI(); NO BACKEND METHOD YET FOR QUERYING CHALLENGE INFO, TO BE DONE NEXT SPRINT
-    console.log(this.state.challengeId);
-    console.log(this.state.challengeName);
-    console.log(this.state.creatorId);
   }
 
   render() {
