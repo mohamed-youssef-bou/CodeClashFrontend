@@ -1,38 +1,103 @@
 import React, { Component } from "react";
-import "./ChallengePage.css";
+import jwt_decode from "jwt-decode";
+import { Redirect } from 'react-router-dom';
 
 export class ChallengePage extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      challenge: null,
-    };
+
+  state = {
+    //TODO SET CHALLENGEID IN REDIRECT COMPONENT IN LISTALLCHALLENGES WHEN CLICKING
+    challengeId: this.props.location.state.challengeId,//obtained from the redirect in listAllChallengePage
+    challengeName: this.props.location.state.challengeName,//remove this in next sprint
+    creatorId: this.props.location.state.creatorId,//remove in next sprint
+    description: '',
+    functionSignature: '',
+    localTests: [],
+    hiddenTests: [],
+    solution: '',
+    dateCreated: null,
+    dateClosed: null
   }
 
+  //CALLAPI() WILL NOT BE USED FOR THIS SPRINT
   callAPI() {
-    fetch("http://localhost:9000/") //insert correct link
-      .then((res) => res.json())
-      .then((res) =>
-        this.setState({
-          challenge: res.challenge,
-        })
-      )
-      .catch((err) => {
-        console.log(err);
-      });
+
+    fetch('http://localhost:9000/challenges/' + this.state.challengeId)
+        .then(res => res.json())
+        .then(res => this.setState({
+          challengeName: res.challengeName,
+          creatorId: res.creatorId,
+          description: res.description,
+          functionSignature: res.functionSignature,
+          localTests: res.localTests,
+          hiddenTests: res.hiddenTests,
+          solution: res.solution,
+          dateCreated: res.dateCreated,
+          dateClosed: res.dateClosed
+        }))
+        .catch(err => {
+          console.log(err);
+        });
+  }
+
+  deleteChallenge = (event) => {
+    event.preventDefault();
+
+    let choice = prompt("Are you sure you want to delete this challenge y/n");
+
+    if (choice.toLowerCase() === 'y' || choice.toLowerCase() === 'yes') {
+      fetch('http://localhost:9000/deleteChallenge',{
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: {
+          'challengeId': this.state.challengeId,
+          'challengeName': this.state.challengeName,
+          'author': this.state.creatorId
+        }
+
+      }).then(res => {
+        if(res.status === 201) {
+          this.setState({navReady: true});//navigating back to list of challenges page
+        }
+      }).catch(error => {
+        console.log(error);
+      })
+    } else return;
+  }
+
+  checkId = () => {
+    const _id = jwt_decode(localStorage.getItem("token")).user._id;
+    //for now, setting the state creatorId field to _id as we cannot query the challenge info yet
+    //this.state.creatorId = _id;
+    //TODO remove above line in NEXT SPRINT
+    if (_id === this.state.creatorId) {
+      return true;
+    }
+    return false;
   }
 
   componentDidMount() {
-    this.callAPI();
+    //this.callAPI(); NO BACKEND METHOD YET FOR QUERYING CHALLENGE INFO, TO BE DONE NEXT SPRINT
+    console.log(this.state.challengeId);
+    console.log(this.state.challengeName);
+    console.log(this.state.creatorId);
   }
 
   render() {
-    return (
-      <div class="challengePageContainer">
-        <h1 class="title">Challenge Name</h1>
-        <div> Challenge Description...</div>
-      </div>
-    );
+    if (this.state.navReady) {
+      return <Redirect to='/challenges' />
+    }
+    if(this.checkId()){
+      return <button color="#FF0000" className="delChallenge" onClick={this.deleteChallenge}>Delete</button>//red
+    }
+    else {
+      return <button color="#808080" className="delChallenge">Delete</button>//gray delete button and does not do anything
+    }
+    //TODO NEXT SPRINT return ( elements of state);
   }
+
 }
+
+
 export default ChallengePage;
