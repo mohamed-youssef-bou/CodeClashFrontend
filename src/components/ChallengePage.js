@@ -1,23 +1,26 @@
 import React, { Component } from "react";
 import jwt_decode from "jwt-decode";
 import { Redirect } from 'react-router-dom';
+import "./ChallengePage.css";
 
 export class ChallengePage extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
 
-  state = {
-    //TODO SET CHALLENGEID IN REDIRECT COMPONENT IN LISTALLCHALLENGES WHEN CLICKING
-    challengeId: this.props.location.state.challengeId,//obtained from the redirect in listAllChallengePage
-    challengeName: this.props.location.state.challengeName,//remove this in next sprint
-    creatorId: this.props.location.state.creatorId,//remove in next sprint
-    description: '',
-    functionSignature: '',
-    localTests: [],
-    hiddenTests: [],
-    solution: '',
-    dateCreated: null,
-    dateClosed: null
+      //TODO SET CHALLENGEID IN REDIRECT COMPONENT IN LISTALLCHALLENGES WHEN CLICKING
+      challengeId: this.props.location.state.challengeId,//obtained from the redirect in listAllChallengePage
+      challengeName: this.props.location.state.challengeName,//remove this in next sprint
+      creatorId: this.props.location.state.creatorId,//remove in next sprint
+      description: '',
+      functionSignature: '',
+      localTests: [],
+      hiddenTests: [],
+      solution: '',
+      dateCreated: null,
+      dateClosed: null
+    }
   }
-
   //CALLAPI() WILL NOT BE USED FOR THIS SPRINT
   callAPI() {
 
