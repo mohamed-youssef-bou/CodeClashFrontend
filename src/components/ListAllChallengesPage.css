@@ -9,11 +9,121 @@
   --clr-accent: #00bbdd;
 }
 
+.massiveContainer {
+  display: flex;
+}
+.navLeft {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 30vw;
+  background-color: var(--clr-accent);
+}
+
+.profilePicture {
+  height: 150px;
+  width: 150px;
+  background: url(../assets/profilePic.PNG);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 20px 0px;
+}
+
+.username {
+  font-size: 2.25rem;
+  text-align: center;
+  color: white;
+}
+
+.navBarList {
+  list-style: none;
+  padding: 0px 0px;
+  margin: 20px 20px;
+}
+
+.navBarListItem {
+  display: flex;
+  background-color: white;
+  margin: 20px 0px;
+}
+
+.navBarButton {
+  z-index: 1;
+  background-color: white;
+  display: inline-block;
+  margin: 0px 0px;
+  padding: 12px 20px;
+  border-radius: 0px;
+}
+
+.navBarButton:hover {
+  border: solid 0px black;
+}
+
+.icon {
+  display: inline-block;
+  height: 48px;
+  width: 48px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: 20;
+  vertical-align: middle;
+}
+
+/* .icon::before {
+  position: absolute;
+  content: "";
+  background-color: white; 
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  z-index: 19;
+  border: solid 3px black;
+} */
+
+.icon::after {
+  position: absolute;
+  content: "";
+  height: 48px;
+  width: 48px;
+  border-radius: 50%;
+  z-index: 40;
+  border: solid 3px red;
+}
+
+.updateProfileIcon {
+  background: url(../assets/iconmonstr-user-5-48.png);
+}
+
+.createChallengeIcon {
+  background: url(../assets/iconmonstr-edit-9-48.png);
+}
+
+.listChallengesIcon {
+  background: url(../assets/iconmonstr-view-2-48.png);
+}
+
+.logoutIcon {
+  background: url(../assets/iconmonstr-power-on-off-8-48.png);
+}
+
+.username::before,
+.username::after {
+  display: block;
+  content: " ";
+  height: 0px;
+  width: 20vw;
+  border: 1px solid black;
+  background-color: black;
+}
+
 .challengesPageContainer {
   background-color: black;
   color: white;
   height: 100vh;
-  width: 100vw;
+  width: 70vw;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -27,8 +137,8 @@
   right: 0%;
   display: block;
   margin-top: 20px;
-  height: 150px;
-  width: 150px;
+  height: 100px;
+  width: 100px;
   background: url(../assets/logoEdited.png);
   background-position: center;
   background-repeat: no-repeat;
@@ -112,4 +222,3 @@
   border: none;
   outline: none;
 }
-
