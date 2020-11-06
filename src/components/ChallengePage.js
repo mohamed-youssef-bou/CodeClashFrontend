@@ -16,7 +16,8 @@ export class ChallengePage extends Component {
       hiddenTests: [],
       solution: '',
       dateCreated: null,
-      dateClosed: null
+      dateClosed: null,
+      connectedUserName: ''
     }
   }
   //CALLAPI() WILL NOT BE USED FOR THIS SPRINT
@@ -40,9 +41,23 @@ export class ChallengePage extends Component {
         });
   }
 
+  getConnectedUserName() {
+    var _id = jwt_decode(localStorage.getItem("token")).user._id;
+
+    fetch("http://localhost:9000/" + _id)
+        .then((res) => res.json())
+        .then((res) =>
+            this.setState({
+              connectedUserName: res.username,
+            })
+        )
+        .catch((err) => {
+          console.log(err);
+        });
+  }
+
   deleteChallenge = (event) => {
     event.preventDefault();
-    const _id = jwt_decode(localStorage.getItem("token")).user._id;
     let choice = prompt("Are you sure you want to delete this challenge y/n");
 
     if (choice.toLowerCase() === 'y' || choice.toLowerCase() === 'yes') {
@@ -54,7 +69,7 @@ export class ChallengePage extends Component {
         body: {
           'challengeId': this.state.challengeId,
           'challengeName': this.state.challengeName,
-          'author': _id
+          'author': this.state.connectedUserName
         }
 
       }).then(res => {
@@ -80,6 +95,7 @@ export class ChallengePage extends Component {
 
   componentDidMount() {
     //this.callAPI(); NO BACKEND METHOD YET FOR QUERYING CHALLENGE INFO, TO BE DONE NEXT SPRINT
+    this.getConnectedUserName();
   }
 
   render() {
