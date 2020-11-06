@@ -106,7 +106,11 @@ export class UserLoginPage extends Component {
             ></input>
           </form>
           <div className="loginButtons">
-            <button type="submit" className="loginSubmit">
+            <button
+              type="submit"
+              className="loginSubmit"
+              onClick={this.handleSubmit}
+            >
               <img className="left arrow" src={leftArrow} />
               Login
               <img className="right arrow" src={rightArrow} />
