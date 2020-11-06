@@ -9,7 +9,7 @@ export class ChallengePage extends Component {
     this.state = {
       challengeId: this.props.location.state.challengeId,//obtained from the redirect in listAllChallengePage
       challengeName: this.props.location.state.challengeName,//remove this in next sprint
-      creatorId: '',
+      creatorId: this.props.location.state.creatorId,//remove this in next sprint
       description: '',
       functionSignature: '',
       localTests: [],
@@ -54,6 +54,32 @@ export class ChallengePage extends Component {
         .catch((err) => {
           console.log(err);
         });
+  }
+
+  closeChallenge = (event) => {
+    event.preventDefault();
+
+    fetch('http://localhost:9000/closeChallenge', {
+
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: {
+        'challengeId': this.state.challengeId,
+        'creatorId': this.state.creatorId,
+        'challengeName': this.state.challengeName
+      }
+
+    })
+        .then( res => {
+          if(res.status === 201) {
+            this.setState({navReady: true});
+          }
+        })
+        .catch(error => {
+          console.log(error);
+        })
   }
 
   deleteChallenge = (event) => {
@@ -105,7 +131,7 @@ export class ChallengePage extends Component {
     if(this.checkId()){
       return <button color="#FF0000" className="delChallenge" onClick={this.deleteChallenge}>Delete</button>//red
     }
-    else {
+    else {//we could even remove the button if the id does not match, as you wish
       return <button color="#808080" className="delChallenge">Delete</button>//gray delete button and does not do anything
     }
     //TODO NEXT SPRINT return ( elements of state);

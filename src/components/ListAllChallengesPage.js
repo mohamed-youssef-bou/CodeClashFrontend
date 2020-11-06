@@ -9,9 +9,10 @@ export class ListAllChallengesPage extends Component {
             challenges: [],
             navChall: false,
             selectedChallengeId: '',
-            //TODO CHALLENGE NAME WILL BE AVAILABLE IN CHALLENGEPAGE NEXT SPRINT, REMOVE IT THEN.
+            //TODO CHALLENGE NAME/ CREATOR ID WILL BE AVAILABLE IN CHALLENGEPAGE NEXT SPRINT, REMOVE IT THEN.
             //remove in next sprint
             challengeName: '',
+            selectedChallengeCreatorId: '',
         };
     }
 
@@ -53,8 +54,9 @@ export class ListAllChallengesPage extends Component {
                     pathname: "/challenge",
                     state: {
                         challengeId: this.state.selectedChallengeId,
-                        //TODO LINE BELOW WILL BE SET IN CHALLENGEPAGE NEXT SPRINT REMOVE IT THEN
-                        challengeName: this.state.challengeName
+                        //TODO LINEs BELOW WILL BE SET IN CHALLENGEPAGE NEXT SPRINT REMOVE THEM THEN
+                        challengeName: this.state.challengeName,
+                        creatorId: this.state.selectedChallengeCreatorId
                     }
                 }} />;
         }
@@ -72,8 +74,9 @@ export class ListAllChallengesPage extends Component {
                                 <button class="challengeListButtons" onClick={ () => {
 
                                     this.setState({ selectedChallengeId: challenge._id,
-                                        //TODO REMOVE CHALLENGE NAME IN NEXT SPRINT
-                                        challengeName: challenge.name});
+                                        //TODO REMOVE CHALLENGE NAME/CREATOR ID IN NEXT SPRINT
+                                        challengeName: challenge.name,
+                                        creatorId: challenge.creatorId});
 
                                     this.navChallenge();}}>
                                     {challenge}
