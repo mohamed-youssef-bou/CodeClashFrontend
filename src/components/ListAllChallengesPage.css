@@ -72,32 +72,6 @@
   vertical-align: middle;
 }
 
-/* 
-attempt at creating an inner circle with red border with an outer circle
-with a black border to highlight the icons more :/
-*/
-
-/* .icon::before {
-  position: absolute;
-  content: "";
-  background-color: white; 
-  height: 60px;
-  width: 60px;
-  border-radius: 50%;
-  z-index: 19;
-  border: solid 3px black;
-} */
-
-/* .icon::after {
-  position: absolute;
-  content: "";
-  height: 48px;
-  width: 48px;
-  border-radius: 50%;
-  z-index: 40;
-  border: solid 3px red;
-} */
-
 .updateProfileIcon {
   background: url(../assets/iconmonstr-user-5-48.png);
 }
