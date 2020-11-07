@@ -1,0 +1,114 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --clr-grey: #353535;
+  --clr-accent: #00bbdd;
+}
+
+.title-create {
+  margin: 10px 0px;
+  font-size: 2.2rem;
+}
+
+.title-create::before,
+.title-create::after {
+  margin: 10px 0px;
+  display: block;
+  content: " ";
+  height: 0px;
+  width: 20vw;
+  border: 1px solid white;
+  background-color: white;
+}
+
+.create-input {
+  border-radius: 20px;
+  border: solid 2px var(--clr-accent);
+  margin: 5px 5px;
+}
+
+.test-input {
+  max-width: 140px;
+}
+
+.createChallengePageSubcontainer {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--clr-grey);
+  width: 55vw;
+  height: 75vh;
+}
+
+.createChallengePageInputFields {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 100px 100px 100px;
+}
+
+.challengeNameInput,
+.challengeSignatureInput {
+  grid-column: 1 / 4;
+}
+
+.challengeDescriptionInput {
+  grid-column: 1 / 3;
+  height: 150px;
+}
+
+.challengeLanguageSelector {
+  align-self: start;
+  grid-column: 3 / 4;
+  height: 30px;
+  border-radius: 20px;
+  border: solid 2px var(--clr-accent);
+  position: relative;
+  top: -23px;
+}
+
+.createChallengeTestsContainer {
+  display: flex;
+}
+
+.localTestsContainer,
+.hiddenTestsContainer {
+  display: flex;
+  flex-direction: column;
+  margin: 0px 30px;
+}
+
+.test-label {
+  font-size: 1.25rem;
+  margin: 0px 0px;
+  justify-self: start;
+}
+
+.localTestsSubcontainer,
+.hiddenTestsSubcontainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.localTestsEntryContainer,
+.hiddenTestsEntryContainer {
+  display: flex;
+}
+
+.arrow {
+  height: 50px;
+  width: auto;
+}
+
+.submitButton {
+  font-size: 1rem;
+  background-color: black;
+  color: white;
+}
+
+.submitButton:hover {
+  background-color: black;
+  border: none;
+}

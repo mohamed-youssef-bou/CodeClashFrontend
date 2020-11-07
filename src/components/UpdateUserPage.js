@@ -10,7 +10,7 @@ export class UpdateUserPage extends Component {
       newUsername: "",
       newPassword: "",
       isRedirect: false,
-      userEmail: ""
+      userEmail: "",
     };
 
     //functions
@@ -47,8 +47,8 @@ export class UpdateUserPage extends Component {
       .catch((err) => console.log(err));
     //set error text to display
     this.setState({
-      isRedirect: true
-    })
+      isRedirect: true,
+    });
   }
 
   handleReturn() {
@@ -59,15 +59,15 @@ export class UpdateUserPage extends Component {
   getEmail() {
     const _id = jwt_decode(localStorage.getItem("token")).user._id;
     fetch("http://localhost:9000/" + _id)
-        .then((res) => res.json())
-        .then((res) =>
-            this.setState({
-              userEmail: res.email
-            })
-        )
-        .catch((err) => {
-          console.log(err);
-        });
+      .then((res) => res.json())
+      .then((res) =>
+        this.setState({
+          userEmail: res.email,
+        })
+      )
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   componentDidMount() {
@@ -83,8 +83,7 @@ export class UpdateUserPage extends Component {
     return (
       <div id="container" class="container">
         <div class="fieldContainer">
-          <div class="logo">
-          </div>
+          <div class="logo"></div>
           <h1> Update Account Details</h1>
           <label>Username</label>
           <input
@@ -94,7 +93,7 @@ export class UpdateUserPage extends Component {
             onChange={this.updateUsername}
           ></input>
           <label>Email Address</label>
-            <input class="emailInput" value={this.state.userEmail} />
+          <input class="emailInput" value={this.state.userEmail} />
           <label>Password</label>
           <input
             class="passwordInput"
@@ -103,25 +102,32 @@ export class UpdateUserPage extends Component {
             onChange={this.updatePassword}
           ></input>
           <div class="buttonContainer">
-          <button class="updateButton" onClick={this.handleSubmit}>
-          <img className="left arrow"
-                 src={require('../assets/leftArrow.png')} />
-            Update
-            <img className="right arrow"
-                 src={require('../assets/rightArrow.png')} />
-          </button>
-          <button class="returnButton" onClick={this.handleReturn}>
-          <img className="left arrow"
-                 src={require('../assets/leftArrow.png')} />
-            Return
-            <img className="right arrow"
-                 src={require('../assets/rightArrow.png')} />
-          </button>
+            <button class="updateButton" onClick={this.handleSubmit}>
+              <img
+                className="left arrow"
+                src={require("../assets/leftArrow.png")}
+              />
+              Update
+              <img
+                className="right arrow"
+                src={require("../assets/rightArrow.png")}
+              />
+            </button>
+            <button class="returnButton" onClick={this.handleReturn}>
+              <img
+                className="left arrow"
+                src={require("../assets/leftArrow.png")}
+              />
+              Return
+              <img
+                className="right arrow"
+                src={require("../assets/rightArrow.png")}
+              />
+            </button>
           </div>
           <p class="errorMessage"></p>
         </div>
-        <div class="rightBackgroundContainer">
-        </div>
+        <div class="rightBackgroundContainer"></div>
       </div>
     );
   }
