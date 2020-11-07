@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import jwt_decode from "jwt-decode";
 import { Redirect } from "react-router-dom";
+import LinkButton from "./LinkButton";
+import "./ListAllChallengesPage.css";
+import "./CreateChallengePage.css";
 
 export class UserLandingPage extends Component {
   state = {
@@ -58,6 +61,10 @@ export class UserLandingPage extends Component {
       });
   };
 
+  redirectToChallengesList = (event) => {
+    this.setState({goToChallenges : false});
+  };
+
   logout = (event) => {
     event.preventDefault();
     localStorage.setItem("token", "");
@@ -74,31 +81,36 @@ export class UserLandingPage extends Component {
       return <Redirect to="/login" />;
     }
 
+    if (this.state.goToChallenges) {
+      return <Redirect to="/challenges" />;
+    }
+
     return (
-      <div id="userInformation">
-        <h2>CodeClash</h2>
-        <p>Email: {this.state.email}</p>
-        <p>username: {this.state.username}</p>
-        <p>Score: {this.state.score}</p>
-        <p>
-          My Challenges:{" "}
-          {this.state.challengesCreated.map((challenge) => (
-            <li>{challenge.name}</li>
-          ))}
-        </p>
-        <p>
-          My Challenge Submissions:{" "}
-          {this.state.submissions.map((submission) => (
-            <li>{submission.name}</li>
-          ))}
-        </p>
-        <button className="delAccount" onClick={this.deleteAccount}>
-          Delete Account
-        </button>
-        <button className="logout" onClick={this.logout}>
-          Logout
-        </button>
-      </div>
+        <div className="massiveContainer">
+            <div className="navLeft">
+                <div className="profilePicture"></div>
+                <h1 className="username">{this.state.username}</h1>
+                <ul className="navBarList">
+                    <li className="navBarListItem">
+                        <div className="icon updateProfileIcon"></div>
+                        <LinkButton className="navBarButton" to="/update">Update Profile</LinkButton>
+                    </li>
+                    <li className="navBarListItem">
+                        <div className="icon createChallengeIcon"></div>
+                        <LinkButton className="navBarButton" to="/create_challenge">Create Challenge</LinkButton>
+                    </li>
+                    <li className="navBarListItem">
+                        <div className="icon listChallengesIcon"></div>
+                        <LinkButton className="navBarButton" to="/challenges">List Challenges</LinkButton>
+                    </li>
+                    <li className="navBarListItem">
+                        <div className="icon logoutIcon"></div>
+                        <button className="navBarButton" onClick={this.logout}>Logout</button>
+                    </li>
+                </ul>
+            </div>
+            <div className="rightBackgroundContainer"></div>
+        </div>
     );
   }
 }
