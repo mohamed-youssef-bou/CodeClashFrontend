@@ -17,28 +17,19 @@ export class ListAllChallengesPage extends Component {
     };
   }
 
-  //for testing purposes
-  fakeChallengeNames = [
-    "challengeA",
-    "challengeB",
-    "MazeMania",
-    "Couldn't create JS objects",
-    "Angular Memes",
-  ];
   callAPI() {
-    // const _id = jwt_decode(localStorage.getItem("token")).user._id;
-    // fetch("http://localhost:9000/challenges/:" + _id)
-    //   .then((res) => res.json())
-    //   .then((res) =>
-    //     this.setState({
-    //       challenges: res.challenges,
-    //     })
-    //   )
-    //   .catch((err) => {
-    //     console.log(err);
-    //   });
+    const _id = jwt_decode(localStorage.getItem("token")).user._id;
+    fetch("http://localhost:9000/challenges/:" + _id)
+      .then((res) => res.json())
+      .then((res) => {
+        this.setState({
+          challenges: res,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
 
-    this.setState({ challenges: this.fakeChallengeNames });
     console.log(this.state.challenges);
   }
 
@@ -95,25 +86,30 @@ export class ListAllChallengesPage extends Component {
           <div class="challengesPageSubcontainer">
             <h1 class="title">Available Challenges</h1>
             <ul class="challengesList">
-              {this.state.challenges.map((challenge) => (
-                <li class="challengesListItem">
-                  <button
-                    class="challengeListButtons"
-                    onClick={() => {
-                      this.setState({
-                        selectedChallengeId: challenge._id,
-                        //TODO REMOVE CHALLENGE NAME IN NEXT SPRINT
-                        challengeName: challenge.name,
-                        creatorId: this.state.selectedChallengeCreatorId,
-                      });
+              {this.state.challenges.map(
+                (challenge) => (
+                  console.log(challenge),
+                  (
+                    <li class="challengesListItem">
+                      <button
+                        class="challengeListButtons"
+                        onClick={() => {
+                          this.setState({
+                            selectedChallengeId: challenge._id,
+                            //TODO REMOVE CHALLENGE NAME IN NEXT SPRINT
+                            challengeName: challenge.name,
+                            creatorId: this.state.selectedChallengeCreatorId,
+                          });
 
-                      this.navChallenge();
-                    }}
-                  >
-                    {challenge} {/* challenge.name */}
-                  </button>
-                </li>
-              ))}
+                          this.navChallenge();
+                        }}
+                      >
+                        {challenge.challengeName} {/* challenge.name */}
+                      </button>
+                    </li>
+                  )
+                )
+              )}
             </ul>
           </div>
         </div>
