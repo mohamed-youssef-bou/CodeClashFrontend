@@ -20,7 +20,7 @@ export class ChallengePage extends Component {
       connectedUserName: ''
     }
   }
-  //CALLAPI() WILL NOT BE USED FOR THIS SPRINT
+  
   callAPI() {
 
     fetch('http://localhost:9000/challenges/' + this.state.challengeId)
@@ -110,9 +110,6 @@ export class ChallengePage extends Component {
 
   checkId = () => {
     const _id = jwt_decode(localStorage.getItem("token")).user._id;
-    //for now, setting the state creatorId field to _id as we cannot query the challenge info yet
-    //this.state.creatorId = _id;
-    //TODO remove above line in NEXT SPRINT
     if (_id === this.state.creatorId) {
       return true;
     }
@@ -129,12 +126,13 @@ export class ChallengePage extends Component {
       return <Redirect to='/challenges' />
     }
     if(this.checkId()){
-      return <button color="#FF0000" className="delChallenge" onClick={this.deleteChallenge}>Delete</button>//red
+      return( 
+        <div>
+          <button type="submit" className="btn btn-danger mb-2 mx-2" onClick={this.deleteChallenge}>Delete</button>
+          <button type="submit" className="btn btn-info mb-2 mx-2" onClick={this.closeChallenge}>Close</button>
+        </div>
+      )
     }
-    else {//we could even remove the button if the id does not match, as you wish
-      return <button color="#808080" className="delChallenge">Delete</button>//gray delete button and does not do anything
-    }
-    //TODO NEXT SPRINT return ( elements of state);
   }
 
 }
