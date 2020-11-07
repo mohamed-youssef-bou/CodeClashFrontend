@@ -2,13 +2,16 @@ import React, { Component } from "react";
 import "./ListAllChallengesPage.css";
 import { Redirect } from "react-router-dom";
 import jwt_decode from "jwt-decode";
+import LinkButton from "./LinkButton";
 
 export class ListAllChallengesPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      username: "",
       challenges: [],
       navChall: false,
+      navReady: false,
       selectedChallengeId: "",
       //TODO CHALLENGE NAME/ CREATOR ID WILL BE AVAILABLE IN CHALLENGEPAGE NEXT SPRINT, REMOVE IT THEN.
       //remove in next sprint
@@ -19,6 +22,7 @@ export class ListAllChallengesPage extends Component {
 
   callAPI() {
     const _id = jwt_decode(localStorage.getItem("token")).user._id;
+
     fetch("http://localhost:9000/challenges/:" + _id)
       .then((res) => res.json())
       .then((res) => {
@@ -31,6 +35,17 @@ export class ListAllChallengesPage extends Component {
       });
 
     console.log(this.state.challenges);
+
+    fetch("http://localhost:9000/" + _id)
+        .then((res) => res.json())
+        .then((res) =>
+            this.setState({
+              username: res.username,
+            })
+        )
+        .catch((err) => {
+          console.log(err);
+        });
   }
 
   componentDidMount() {
@@ -41,7 +56,18 @@ export class ListAllChallengesPage extends Component {
     this.setState({ navChall: true });
   };
 
+  logout = (event) => {
+    event.preventDefault();
+    localStorage.setItem("token", "");
+    console.log("token " + localStorage.getItem("token"));
+    this.setState({ navReady: true });
+  };
+
   render() {
+    if (this.state.navReady) {
+      return <Redirect to="/login" />;
+    }
+
     if (this.state.navChall) {
       return (
         <Redirect
@@ -57,27 +83,24 @@ export class ListAllChallengesPage extends Component {
         />
       );
     }
+
     return (
       <div class="massiveContainer">
         <div class="navLeft">
           <div class="profilePicture"></div>
-          <h1 class="username">Fake Username</h1>
-          <ul class="navBarList">
-            <li class="navBarListItem">
-              <div class="icon updateProfileIcon"></div>
-              <button class="navBarButton">Update Profile</button>
+          <h1 className="username">{this.state.username}</h1>
+          <ul className="navBarList">
+            <li className="navBarListItem">
+              <div className="icon updateProfileIcon"></div>
+              <LinkButton className="navBarButton" to="/update">Update Profile</LinkButton>
             </li>
-            <li class="navBarListItem">
-              <div class="icon createChallengeIcon"></div>
-              <button class="navBarButton">Create Challenge</button>
+            <li className="navBarListItem">
+              <div className="icon createChallengeIcon"></div>
+              <LinkButton className="navBarButton" to="/create_challenge">Create Challenge</LinkButton>
             </li>
-            <li class="navBarListItem">
-              <div class="icon listChallengesIcon"></div>
-              <button class="navBarButton">List Challenges</button>
-            </li>
-            <li class="navBarListItem">
-              <div class="icon logoutIcon"></div>
-              <button class="navBarButton">Logout</button>
+            <li className="navBarListItem">
+              <div className="icon logoutIcon"></div>
+              <button className="navBarButton" onClick={this.logout}>Logout</button>
             </li>
           </ul>
         </div>

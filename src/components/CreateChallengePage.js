@@ -1,43 +1,76 @@
 import React, { Component } from "react";
 import "./ListAllChallengesPage.css";
 import "./CreateChallengePage.css";
+import jwt_decode from "jwt-decode";
+import LinkButton from "./LinkButton";
+import UserLandingPage from "./UserLandingPage";
+import {Redirect} from "react-router-dom";
 
 export class CreateChallengePage extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      username: "",
       language: "language",
+      navReady: false,
     };
 
     this.handleLanguageChange = this.handleLanguageChange.bind(this);
+
   }
 
   handleLanguageChange(event) {
     this.setState({ language: event.target.value });
   }
 
+  getUsername() {
+    var _id = jwt_decode(localStorage.getItem("token")).user._id;
+
+    fetch("http://localhost:9000/" + _id)
+        .then((res) => res.json())
+        .then((res) =>
+            this.setState({
+              username: res.username,
+            })
+        )
+        .catch((err) => {
+          console.log(err);
+        });
+  }
+
+  logout = (event) => {
+    event.preventDefault();
+    localStorage.setItem("token", "");
+    console.log("token " + localStorage.getItem("token"));
+    this.setState({ navReady: true });
+  };
+
+  componentDidMount() {
+    this.getUsername();
+  }
+
   render() {
+    if (this.state.navReady) {
+      return <Redirect to="/login" />;
+    }
+
     return (
       <div class="massiveContainer">
         <div class="navLeft">
           <div class="profilePicture"></div>
-          <h1 class="username">Fake Username</h1>
-          <ul class="navBarList">
-            <li class="navBarListItem">
-              <div class="icon updateProfileIcon"></div>
-              <button class="navBarButton">Update Profile</button>
+          <h1 class="username">{this.state.username}</h1>
+          <ul className="navBarList">
+            <li className="navBarListItem">
+              <div className="icon updateProfileIcon"></div>
+              <LinkButton className="navBarButton" to="/update">Update Profile</LinkButton>
             </li>
-            <li class="navBarListItem">
-              <div class="icon createChallengeIcon"></div>
-              <button class="navBarButton">Create Challenge</button>
+            <li className="navBarListItem">
+              <div className="icon listChallengesIcon"></div>
+              <LinkButton className="navBarButton" to="/challenges">List Challenges</LinkButton>
             </li>
-            <li class="navBarListItem">
-              <div class="icon listChallengesIcon"></div>
-              <button class="navBarButton">List Challenges</button>
-            </li>
-            <li class="navBarListItem">
-              <div class="icon logoutIcon"></div>
-              <button class="navBarButton">Logout</button>
+            <li className="navBarListItem">
+              <div className="icon logoutIcon"></div>
+              <button className="navBarButton" onClick={this.logout}>Logout</button>
             </li>
           </ul>
         </div>
