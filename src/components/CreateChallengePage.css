@@ -59,9 +59,14 @@
   height: 150px;
 }
 
-.challengeLanguageInput {
+.challengeLanguageSelector {
+  align-self: start;
   grid-column: 3 / 4;
-  height: 150px;
+  height: 30px;
+  border-radius: 20px;
+  border: solid 2px var(--clr-accent);
+  position: relative;
+  top: -23px;
 }
 
 .createChallengeTestsContainer {
@@ -72,10 +77,12 @@
 .hiddenTestsContainer {
   display: flex;
   flex-direction: column;
+  margin: 0px 30px;
 }
 
 .test-label {
   font-size: 1.25rem;
+  margin: 0px 0px;
   justify-self: start;
 }
 

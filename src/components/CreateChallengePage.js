@@ -5,7 +5,15 @@ import "./CreateChallengePage.css";
 export class CreateChallengePage extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      language: "language",
+    };
+
+    this.handleLanguageChange = this.handleLanguageChange.bind(this);
+  }
+
+  handleLanguageChange(event) {
+    this.setState({ language: event.target.value });
   }
 
   render() {
@@ -40,7 +48,21 @@ export class CreateChallengePage extends Component {
             <div class="createChallengePageInputFields">
               <input class="challengeNameInput create-input"></input>
               <input class="challengeDescriptionInput  create-input"></input>
-              <input class="challengeLanguageInput create-input"></input>
+              <select
+                class="challengeLanguageSelector"
+                value={this.state.language}
+                onChange={this.handleLanguageChange}
+              >
+                <option class="challengeLanguageOption" value="java">
+                  Java
+                </option>
+                <option class="challengeLanguageOption" value="javascript">
+                  Javascript
+                </option>
+                <option class="challengeLanguageOption" value="python">
+                  Python
+                </option>
+              </select>
               <input class="challengeSignatureInput create-input"></input>
             </div>
             <div class="createChallengeTestsContainer">
