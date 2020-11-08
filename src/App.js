@@ -73,8 +73,8 @@ class App extends Component {
                     <Route path="/update" component={UpdateUserPage} />
                     <Route path="/landing_page" component={UserLandingPage} />
                     <Route path="/create_account" component={UserCreateAccountPage} />
-                    <Route path="/challenges" component={ListAllChallengesPage}></Route>
-                    <Route path="/challenge" component={ChallengePage}></Route>
+                    <Route path="/challenges" component={ListAllChallengesPage} />
+                    <Route path="/challenge" component={ChallengePage} />
                 </Switch>
             </Router>
         );
