@@ -182,7 +182,7 @@ export class CreateChallengePage extends Component {
       solution: "placeholder", //TODO: remove placeholder in next sprint
     };
 
-    fetch("/createChallenge", {
+    fetch("http://localhost:9000/createChallenge", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
