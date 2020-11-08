@@ -151,23 +151,23 @@ export class CreateChallengePage extends Component {
   handleSubmitCreate(event) {
     event.preventDefault();
 
-    let localTestJson = `{\"input\": \"${this.state.localTestInput1}\", \"output\": ${this.state.localTestOutput1}}`
-    let hiddenTestJson = `{\"input\": \"${this.state.hiddenTestInput1}\", \"output\": ${this.state.hiddenTestOutput1}}`
+    let localTestJson = [{input: this.state.localTestInput1, output: this.state.localTestOutput1}]
+    let hiddenTestJson = [{input: this.state.hiddenTestInput1, output: this.state.hiddenTestOutput1}]
     
     if(this.state.localTestInput2 !== "" && this.state.localTestOutput2 !== ""){
-      localTestJson += `, {\"input\": \"${this.state.localTestInput2}\", \"output\": ${this.state.localTestOutput2}}`
+      localTestJson.push({input: this.state.localTestInput2, output: this.state.localTestOutput2})
     }
-    
+
     if(this.state.localTestInput3 !== "" && this.state.localTestOutput3 !== ""){
-      localTestJson += `, {\"input\": \"${this.state.localTestInput3}\", \"output\": ${this.state.localTestOutput3}}`
+      localTestJson.push({input: this.state.localTestInput3, output: this.state.localTestOutput3})
     }
     
     if(this.state.hiddenTestInput2 !== "" && this.state.hiddenTestOutput2 !== ""){
-      hiddenTestJson += `, {\"input\": \"${this.state.hiddenTestInput2}\", \"output\": ${this.state.hiddenTestOutput2}}`
+      hiddenTestJson.push({input: this.state.hiddenTestInput2, output: this.state.hiddenTestOutput2})
     }
     
     if(this.state.hiddenTestInput3 !== "" && this.state.hiddenTestOutput3 !== ""){
-      hiddenTestJson += `, {\"input\": \"${this.state.hiddenTestInput3}\", \"output\": ${this.state.hiddenTestOutput3}}`
+      hiddenTestJson.push({input: this.state.hiddenTestInput3, output: this.state.hiddenTestOutput3})
     }
 
     let data = {
@@ -177,8 +177,8 @@ export class CreateChallengePage extends Component {
       description: this.state.description,
       language: this.state.language,
       funcSignature: this.state.funcSignature,
-      localTests: localTestJson,
-      hiddenTests: hiddenTestJson,
+      localTests: JSON.stringify(localTestJson),
+      hiddenTests: JSON.stringify(hiddenTestJson),
       solution: "placeholder", //TODO: remove placeholder in next sprint
     };
 
