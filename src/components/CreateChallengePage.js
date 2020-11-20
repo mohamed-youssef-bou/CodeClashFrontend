@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import "./ListAllChallengesPage.css";
+import "./Styles/GeneralStyles.css";
 import "./CreateChallengePage.css";
 import jwt_decode from "jwt-decode";
 import LinkButton from "./LinkButton";
-import {Redirect} from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
 export class CreateChallengePage extends Component {
   constructor(props) {
@@ -38,10 +38,18 @@ export class CreateChallengePage extends Component {
     this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
     this.handleLanguageChange = this.handleLanguageChange.bind(this);
     this.handleFuncSignatureChange = this.handleFuncSignatureChange.bind(this);
-    this.handleLocalTestInputChange = this.handleLocalTestInputChange.bind(this);
-    this.handleLocalTestOutputChange = this.handleLocalTestOutputChange.bind(this);
-    this.handleHiddenTestInputChange = this.handleHiddenTestInputChange.bind(this);
-    this.handleHiddenTestOutputChange = this.handleHiddenTestOutputChange.bind(this);
+    this.handleLocalTestInputChange = this.handleLocalTestInputChange.bind(
+      this
+    );
+    this.handleLocalTestOutputChange = this.handleLocalTestOutputChange.bind(
+      this
+    );
+    this.handleHiddenTestInputChange = this.handleHiddenTestInputChange.bind(
+      this
+    );
+    this.handleHiddenTestOutputChange = this.handleHiddenTestOutputChange.bind(
+      this
+    );
     this.handleSubmitCreate = this.handleSubmitCreate.bind(this);
   }
 
@@ -78,20 +86,20 @@ export class CreateChallengePage extends Component {
   }
 
   handleLocalTestOutputChange(event) {
-      switch (event.target.id) {
-        case "localTestOutput1":
-          this.setState({ localTestOutput1: event.target.value });
-          break;
+    switch (event.target.id) {
+      case "localTestOutput1":
+        this.setState({ localTestOutput1: event.target.value });
+        break;
 
-        case "localTestOutput2":
-          this.setState({ localTestOutput2: event.target.value });
-          break;
+      case "localTestOutput2":
+        this.setState({ localTestOutput2: event.target.value });
+        break;
 
-        case "localTestOutput3":
-          this.setState({ localTestOutput3: event.target.value });
-          break;
-      }
+      case "localTestOutput3":
+        this.setState({ localTestOutput3: event.target.value });
+        break;
     }
+  }
 
   handleHiddenTestInputChange(event) {
     switch (event.target.id) {
@@ -110,35 +118,35 @@ export class CreateChallengePage extends Component {
   }
 
   handleHiddenTestOutputChange(event) {
-      switch (event.target.id) {
-        case "HiddenTestOutput1":
-          this.setState({ HiddenTestOutput1: event.target.value });
-          break;
+    switch (event.target.id) {
+      case "HiddenTestOutput1":
+        this.setState({ HiddenTestOutput1: event.target.value });
+        break;
 
-        case "HiddenTestOutput2":
-          this.setState({ HiddenTestOutput2: event.target.value });
-          break;
+      case "HiddenTestOutput2":
+        this.setState({ HiddenTestOutput2: event.target.value });
+        break;
 
-        case "HiddenTestOutput3":
-          this.setState({ HiddenTestOutput3: event.target.value });
-          break;
-      }
+      case "HiddenTestOutput3":
+        this.setState({ HiddenTestOutput3: event.target.value });
+        break;
     }
+  }
 
   getUsername() {
     var _id = jwt_decode(localStorage.getItem("token")).user._id;
 
     fetch("http://localhost:9000/" + _id)
-        .then((res) => res.json())
-        .then((res) =>
-            this.setState({
-              username: res.username,
-              creatorID: _id,
-            })
-        )
-        .catch((err) => {
-          console.log(err);
-        });
+      .then((res) => res.json())
+      .then((res) =>
+        this.setState({
+          username: res.username,
+          creatorID: _id,
+        })
+      )
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   logout = (event) => {
@@ -151,23 +159,57 @@ export class CreateChallengePage extends Component {
   handleSubmitCreate(event) {
     event.preventDefault();
 
-    let localTestJson = [{input: this.state.localTestInput1, output: this.state.localTestOutput1}]
-    let hiddenTestJson = [{input: this.state.hiddenTestInput1, output: this.state.hiddenTestOutput1}]
-    
-    if(this.state.localTestInput2 !== "" && this.state.localTestOutput2 !== ""){
-      localTestJson.push({input: this.state.localTestInput2, output: this.state.localTestOutput2})
+    let localTestJson = [
+      {
+        input: this.state.localTestInput1,
+        output: this.state.localTestOutput1,
+      },
+    ];
+    let hiddenTestJson = [
+      {
+        input: this.state.hiddenTestInput1,
+        output: this.state.hiddenTestOutput1,
+      },
+    ];
+
+    if (
+      this.state.localTestInput2 !== "" &&
+      this.state.localTestOutput2 !== ""
+    ) {
+      localTestJson.push({
+        input: this.state.localTestInput2,
+        output: this.state.localTestOutput2,
+      });
     }
 
-    if(this.state.localTestInput3 !== "" && this.state.localTestOutput3 !== ""){
-      localTestJson.push({input: this.state.localTestInput3, output: this.state.localTestOutput3})
+    if (
+      this.state.localTestInput3 !== "" &&
+      this.state.localTestOutput3 !== ""
+    ) {
+      localTestJson.push({
+        input: this.state.localTestInput3,
+        output: this.state.localTestOutput3,
+      });
     }
-    
-    if(this.state.hiddenTestInput2 !== "" && this.state.hiddenTestOutput2 !== ""){
-      hiddenTestJson.push({input: this.state.hiddenTestInput2, output: this.state.hiddenTestOutput2})
+
+    if (
+      this.state.hiddenTestInput2 !== "" &&
+      this.state.hiddenTestOutput2 !== ""
+    ) {
+      hiddenTestJson.push({
+        input: this.state.hiddenTestInput2,
+        output: this.state.hiddenTestOutput2,
+      });
     }
-    
-    if(this.state.hiddenTestInput3 !== "" && this.state.hiddenTestOutput3 !== ""){
-      hiddenTestJson.push({input: this.state.hiddenTestInput3, output: this.state.hiddenTestOutput3})
+
+    if (
+      this.state.hiddenTestInput3 !== "" &&
+      this.state.hiddenTestOutput3 !== ""
+    ) {
+      hiddenTestJson.push({
+        input: this.state.hiddenTestInput3,
+        output: this.state.hiddenTestOutput3,
+      });
     }
 
     let data = {
@@ -189,8 +231,8 @@ export class CreateChallengePage extends Component {
       },
       body: JSON.stringify(data),
     })
-        .then((res) => console.log(res))
-        .catch((err) => console.log(err));
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
     //set error text to display
     this.setState({
       navListChallenges: true,
@@ -218,15 +260,21 @@ export class CreateChallengePage extends Component {
           <ul className="navBarList">
             <li className="navBarListItem">
               <div className="icon updateProfileIcon"></div>
-              <LinkButton className="navBarButton" to="/update">Update Profile</LinkButton>
+              <LinkButton className="navBarButton" to="/update">
+                Update Profile
+              </LinkButton>
             </li>
             <li className="navBarListItem">
               <div className="icon listChallengesIcon"></div>
-              <LinkButton className="navBarButton" to="/challenges">List Challenges</LinkButton>
+              <LinkButton className="navBarButton" to="/challenges">
+                List Challenges
+              </LinkButton>
             </li>
             <li className="navBarListItem">
               <div className="icon logoutIcon"></div>
-              <button className="navBarButton" onClick={this.logout}>Logout</button>
+              <button className="navBarButton" onClick={this.logout}>
+                Logout
+              </button>
             </li>
           </ul>
         </div>
@@ -235,14 +283,18 @@ export class CreateChallengePage extends Component {
           <h1 class="title-create">Create Challenge</h1>
           <div class="createChallengePageSubcontainer">
             <div class="createChallengePageInputFields">
-              <input class="challengeNameInput create-input"
-                     placeholder="Challenge title"
-                     value={this.state.challengeTitle}
-                     onChange={this.handleTitleChange}/>
-              <input class="challengeDescriptionInput  create-input"
-                     placeholder="Description"
-                     value={this.state.description}
-                     onChange={this.handleDescriptionChange}/>
+              <input
+                class="challengeNameInput create-input"
+                placeholder="Challenge title"
+                value={this.state.challengeTitle}
+                onChange={this.handleTitleChange}
+              />
+              <input
+                class="challengeDescriptionInput  create-input"
+                placeholder="Description"
+                value={this.state.description}
+                onChange={this.handleDescriptionChange}
+              />
               <select
                 class="challengeLanguageSelector"
                 value={this.state.language}
@@ -258,50 +310,64 @@ export class CreateChallengePage extends Component {
                   Python
                 </option>
               </select>
-              <input class="challengeSignatureInput create-input"
-                     placeholder="Function signature"
-                     value={this.state.funcSignature}
-                     onChange={this.handleFuncSignatureChange}/>
+              <input
+                class="challengeSignatureInput create-input"
+                placeholder="Function signature"
+                value={this.state.funcSignature}
+                onChange={this.handleFuncSignatureChange}
+              />
             </div>
             <div class="createChallengeTestsContainer">
               <div class="localTestsContainer">
                 <label class="test-label">Local Tests</label>
                 <div class="localTestsSubcontainer">
                   <div class="localTestsEntryContainer">
-                    <input class="localTestInput create-input test-input"
-                           placeholder="Input"
-                           value={this.state.localTestInput1}
-                           id="localTestInput1"
-                           onChange={this.handleLocalTestInputChange}/>
-                    <input class="localTestOutput create-input test-input"
-                           placeholder="Output"
-                           value={this.state.localTestOutput1}
-                           id="localTestOutput1"
-                           onChange={this.handleLocalTestOutputChange}/>
+                    <input
+                      class="localTestInput create-input test-input"
+                      placeholder="Input"
+                      value={this.state.localTestInput1}
+                      id="localTestInput1"
+                      onChange={this.handleLocalTestInputChange}
+                    />
+                    <input
+                      class="localTestOutput create-input test-input"
+                      placeholder="Output"
+                      value={this.state.localTestOutput1}
+                      id="localTestOutput1"
+                      onChange={this.handleLocalTestOutputChange}
+                    />
                   </div>
                   <div class="localTestsEntryContainer">
-                    <input class="localTestInput create-input test-input"
-                           placeholder="Input"
-                           value={this.state.localTestInput2}
-                           id="localTestInput2"
-                           onChange={this.handleLocalTestInputChange}/>
-                    <input class="localTestOutput create-input test-input"
-                           placeholder="Output"
-                           value={this.state.localTestOutput2}
-                           id="localTestOutput2"
-                           onChange={this.handleLocalTestOutputChange}/>
+                    <input
+                      class="localTestInput create-input test-input"
+                      placeholder="Input"
+                      value={this.state.localTestInput2}
+                      id="localTestInput2"
+                      onChange={this.handleLocalTestInputChange}
+                    />
+                    <input
+                      class="localTestOutput create-input test-input"
+                      placeholder="Output"
+                      value={this.state.localTestOutput2}
+                      id="localTestOutput2"
+                      onChange={this.handleLocalTestOutputChange}
+                    />
                   </div>
                   <div class="localTestsEntryContainer">
-                    <input class="localTestInput create-input test-input"
-                           placeholder="Input"
-                           value={this.state.localTestInput3}
-                           id="localTestInput3"
-                           onChange={this.handleLocalTestInputChange}/>
-                    <input class="localTestOutput create-input test-input"
-                           placeholder="Output"
-                           value={this.state.localTestOutput3}
-                           id="localTestOutput3"
-                           onChange={this.handleLocalTestOutputChange}/>
+                    <input
+                      class="localTestInput create-input test-input"
+                      placeholder="Input"
+                      value={this.state.localTestInput3}
+                      id="localTestInput3"
+                      onChange={this.handleLocalTestInputChange}
+                    />
+                    <input
+                      class="localTestOutput create-input test-input"
+                      placeholder="Output"
+                      value={this.state.localTestOutput3}
+                      id="localTestOutput3"
+                      onChange={this.handleLocalTestOutputChange}
+                    />
                   </div>
                 </div>
               </div>
@@ -309,40 +375,52 @@ export class CreateChallengePage extends Component {
                 <label class="test-label">Hidden Tests</label>
                 <div class="hiddenTestsSubcontainer">
                   <div class="hiddenTestsEntryContainer">
-                    <input class="hiddenTestInput create-input test-input"
-                           placeholder="Input"
-                           value={this.state.HiddenTestInput1}
-                           id="HiddenTestInput1"
-                           onChange={this.handleHiddenTestInputChange}/>
-                    <input class="hiddenTestOutput create-input test-input"
-                           placeholder="Output"
-                           value={this.state.HiddenTestOutput1}
-                           id="HiddenTestOutput1"
-                           onChange={this.handleHiddenTestOutputChange}/>
+                    <input
+                      class="hiddenTestInput create-input test-input"
+                      placeholder="Input"
+                      value={this.state.HiddenTestInput1}
+                      id="HiddenTestInput1"
+                      onChange={this.handleHiddenTestInputChange}
+                    />
+                    <input
+                      class="hiddenTestOutput create-input test-input"
+                      placeholder="Output"
+                      value={this.state.HiddenTestOutput1}
+                      id="HiddenTestOutput1"
+                      onChange={this.handleHiddenTestOutputChange}
+                    />
                   </div>
                   <div class="hiddenTestsEntryContainer">
-                    <input class="hiddenTestInput create-input test-input"
-                           placeholder="Input"
-                           value={this.state.HiddenTestInput2}
-                           id="HiddenTestInput2"
-                           onChange={this.handleHiddenTestInputChange}/>
-                    <input class="hiddenTestOutput create-input test-input"
-                           placeholder="Output"
-                           value={this.state.HiddenTestOutput2}
-                           id="HiddenTestOutput2"
-                           onChange={this.handleHiddenTestOutputChange}/>
+                    <input
+                      class="hiddenTestInput create-input test-input"
+                      placeholder="Input"
+                      value={this.state.HiddenTestInput2}
+                      id="HiddenTestInput2"
+                      onChange={this.handleHiddenTestInputChange}
+                    />
+                    <input
+                      class="hiddenTestOutput create-input test-input"
+                      placeholder="Output"
+                      value={this.state.HiddenTestOutput2}
+                      id="HiddenTestOutput2"
+                      onChange={this.handleHiddenTestOutputChange}
+                    />
                   </div>
                   <div class="hiddenTestsEntryContainer">
-                    <input class="hiddenTestInput create-input test-input" 
-                           placeholder="Input"
-                           value={this.state.HiddenTestInput3}
-                           id="HiddenTestInput3"
-                           onChange={this.handleHiddenTestInputChange}/>
-                    <input class="hiddenTestOutput create-input test-input"
-                           placeholder="Output"
-                           value={this.state.HiddenTestOutput3}
-                           id="HiddenTestOutput3"
-                           onChange={this.handleHiddenTestOutputChange}/>
+                    <input
+                      class="hiddenTestInput create-input test-input"
+                      placeholder="Input"
+                      value={this.state.HiddenTestInput3}
+                      id="HiddenTestInput3"
+                      onChange={this.handleHiddenTestInputChange}
+                    />
+                    <input
+                      class="hiddenTestOutput create-input test-input"
+                      placeholder="Output"
+                      value={this.state.HiddenTestOutput3}
+                      id="HiddenTestOutput3"
+                      onChange={this.handleHiddenTestOutputChange}
+                    />
                   </div>
                 </div>
               </div>
