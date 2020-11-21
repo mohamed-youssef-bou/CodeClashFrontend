@@ -153,6 +153,18 @@ export class QueryChallengeInfoPage extends Component {
     console.log("STAAAART");
   }
 
+  getCreatorName() {
+    fetch("http://localhost:9000/" + this.state.creatorId)
+        .then((res) => res.json())
+        .then((res) => {
+          return res.username;
+        })
+        .catch((err) => {
+          console.log(err);
+          return err;
+        });
+  }
+
   ChallengeInfoButtons() {
     const checkId = this.checkId();
     if (checkId) {
@@ -267,10 +279,10 @@ export class QueryChallengeInfoPage extends Component {
             <div class="challengeInfoSubcontainer">
               <div class="challengeAttributesContainer">
                 <div class="challengeAttributesItem">
-                  Description: insert some description
+                  Description: {this.state.description}
                 </div>
                 <div class="challengeAttributesItem">
-                  Author: insert some description
+                  Author:{this.getCreatorName}
                 </div>
                 <div class="challengeAttributesItem">Users Attempted: 1337</div>
               </div>
