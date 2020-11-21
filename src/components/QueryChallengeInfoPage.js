@@ -248,9 +248,9 @@ export class QueryChallengeInfoPage extends Component {
       />
     }
     return (
-        <div class="massiveContainer">
-          <div class="navLeft">
-            <div class="profilePicture"></div>
+        <div className="massiveContainer">
+          <div className="navLeft">
+            <div className="profilePicture"></div>
             <h1 className="username">{this.state.username}</h1>
             <ul className="navBarList">
               <li className="navBarListItem">
@@ -273,18 +273,18 @@ export class QueryChallengeInfoPage extends Component {
               </li>
             </ul>
           </div>
-          <div class="rightsidePageContainer">
-            <div class="logoChallengesPage"></div>
-            <h1 class="title-query">Challenge Name</h1>
-            <div class="challengeInfoSubcontainer">
-              <div class="challengeAttributesContainer">
-                <div class="challengeAttributesItem">
+          <div className="rightsidePageContainer">
+            <div className="logoChallengesPage"></div>
+            <h1 className="title-query">Challenge Name</h1>
+            <div className="challengeInfoSubcontainer">
+              <div className="challengeAttributesContainer">
+                <div className="challengeAttributesItem">
                   Description: {this.state.description}
                 </div>
-                <div class="challengeAttributesItem">
+                <div className="challengeAttributesItem">
                   Author:{this.getCreatorName}
                 </div>
-                <div class="challengeAttributesItem">Users Attempted: 1337</div>
+                <div className="challengeAttributesItem">Users Attempted: 1337</div>
               </div>
               {this.ChallengeInfoButtons()}
             </div>
