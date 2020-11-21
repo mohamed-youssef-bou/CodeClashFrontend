@@ -83,8 +83,15 @@ export class QueryChallengeInfoPage extends Component {
     this.setState({ navBack: true });
   }
 
+  // Check conditions for starting a challenge
   handleStart(event) {
     event.preventDefault();
+    if (this.checkId()) {
+      return "Creator of Challenge cannot start challenge."; 
+    }
+    if (this.state.dateClosed != null) {
+      return "Challenge has already been closed."
+    }
     console.log("STAAAART");
   }
 
