@@ -14,8 +14,6 @@ export class ListAllChallengesPage extends Component {
       navChall: false,
       navReady: false,
       selectedChallengeId: "",
-      challengeName: "",
-      selectedChallengeCreatorId: "",
     };
   }
 
@@ -71,11 +69,9 @@ export class ListAllChallengesPage extends Component {
       return (
         <Redirect
           to={{
-            pathname: "/challenge",
+            pathname: "/challenge_info",
             state: {
               challengeId: this.state.selectedChallengeId,
-              challengeName: this.state.challengeName,
-              creatorId: this.state.selectedChallengeCreatorId,
             },
           }}
         />
@@ -123,8 +119,6 @@ export class ListAllChallengesPage extends Component {
                         onClick={() => {
                           this.setState({
                             selectedChallengeId: challenge._id,
-                            challengeName: challenge.challengeName,
-                            selectedChallengeCreatorId: challenge.creatorId,
                           });
 
                           this.navChallenge();
