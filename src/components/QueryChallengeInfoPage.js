@@ -243,7 +243,6 @@ export class QueryChallengeInfoPage extends Component {
             pathname: "/challenge",
             state: {
               challengeId: this.state.challengeId,
-              connectedUserName: this.state.connectedUserName,
             },
           }}
       />

@@ -17,7 +17,6 @@ export class ChallengePage extends Component {
             localTests: [],
             hiddenTests: [],
             solution: '',
-            connectedUserName: this.props.location.state.connectedUserName, //obtained from redirect in QueryChallengeInfoPage
             navReady: false,
             submissionCode: '',
         }
@@ -37,7 +36,6 @@ export class ChallengePage extends Component {
                 localTests: res.localTests,
                 hiddenTests: res.hiddenTests,
                 solution: res.solution,
-                connectedUserName: '',
                 isSubmitted: false,
             }))
             .catch(err => {
@@ -57,11 +55,11 @@ export class ChallengePage extends Component {
 
     handleSubmit() {
 
-
+        const _id = jwt_decode(localStorage.getItem("token")).user._id;
         let data = {
             challengeId: this.state.challengeId,
             submissionCode: this.state.submissionCode,
-            author: this.state.connectedUserName
+            writerId: _id,
         };
 
         fetch('http://localhost:9000/submitChallenge', {
