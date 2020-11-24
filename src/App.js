@@ -19,6 +19,7 @@ import ListAllChallengesPage from "./components/ListAllChallengesPage";
 import ChallengePage from "./components/ChallengePage";
 import QueryChallengeInfoPage from "./components/QueryChallengeInfoPage";
 import LeaderBoardPage from "./components/LeaderBoardPage";
+import ChallengeEditor from "./components/ChallengeEditor/ChallengeEditor";
 
 class App extends Component {
   constructor(props) {
@@ -79,6 +80,7 @@ class App extends Component {
           <Route path="/challenge" component={ChallengePage} />
           <Route path="/challenge_info" component={QueryChallengeInfoPage} />
           <Route path="/leaderboard" component={LeaderBoardPage} />
+          <Route path="/challenge" component={ChallengeEditor} />
         </Switch>
       </Router>
     );
