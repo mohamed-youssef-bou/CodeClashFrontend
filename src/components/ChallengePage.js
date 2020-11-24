@@ -3,10 +3,13 @@ import jwt_decode from "jwt-decode";
 import { Redirect } from 'react-router-dom';
 import "./ChallengePage.css";
 import LinkButton from "./LinkButton";
+import { render } from 'react-dom';
+import MonacoEditor from 'react-monaco-editor';
 
 export class ChallengePage extends Component {
     constructor(props) {
         super(props);
+        // console.log(this.props.location.state.creatorId);
         this.state = {
             challengeId: this.props.location.state.challengeId,//obtained from the redirect in QueryChallengeInfoPage
             challengeName: this.props.location.state.challengeName,
@@ -19,9 +22,19 @@ export class ChallengePage extends Component {
             },
             navReady: false,
             submissionCode: '',
+            code: '// type your code...',
         }
         this.handleExit = this.handleExit.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    editorDidMount(editor, monaco) {
+        console.log('editorDidMount', editor);
+        editor.focus();
+    }
+
+    onChange(newValue, e) {
+    console.log('onChange', newValue, e);
     }
 
     callAPI() {
@@ -81,6 +94,10 @@ export class ChallengePage extends Component {
     }
 
     render() {
+        const code = this.state.code;
+        const options = {
+            selectOnLineNumbers: true
+        };
         if (this.state.navReady) {
             return <Redirect
                 to={{
@@ -151,8 +168,19 @@ export class ChallengePage extends Component {
                 </div>
                 <div className="EditorPlaceHolder">
                     <div className="EditorBackground">
-
+                        <MonacoEditor
+                            width="800"
+                            height="600"
+                            language="javascript"
+                            theme="vs-light"
+                            value={code}
+                            options={options}
+                            onChange={this.onChange}
+                            editorDidMount={this.editorDidMount}
+                        />
                     </div>
+                
+
                     <div className="queryButtonsContainer">
                         <button className="backButton" onClick={this.handleSubmit}>
                             <img
