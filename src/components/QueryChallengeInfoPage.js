@@ -14,11 +14,11 @@ export class QueryChallengeInfoPage extends Component {
       challengeName: "",
       creatorId: "",
       description: "",
-      functionSignature: "",
-      localTests: [],
-      hiddenTests: [],
-      solution: "",
-      dateCreated: null,
+      // functionSignature: "",
+      // localTests: [],
+      // hiddenTests: [],
+      // solution: "",
+      // dateCreated: null,
       dateClosed: null,
       connectedUserName: "",
       navBack: false,
@@ -37,11 +37,6 @@ export class QueryChallengeInfoPage extends Component {
           challengeName: res.challengeName,
           creatorId: res.creatorId,
           description: res.description,
-          functionSignature: res.functionSignature,
-          localTests: res.localTests,
-          hiddenTests: res.hiddenTests,
-          solution: res.solution,
-          dateCreated: res.dateCreated,
           dateClosed: res.dateClosed,
           connectedUserName: "",
         })
@@ -150,7 +145,6 @@ export class QueryChallengeInfoPage extends Component {
     this.setState({
       startChallenge: true,
     });
-    console.log("STAAAART");
   }
 
   getCreatorName() {
@@ -253,7 +247,7 @@ export class QueryChallengeInfoPage extends Component {
       <div className="massiveContainer">
         <div className="navLeft">
           <div className="profilePicture"></div>
-          <h1 className="username">{this.state.username}</h1>
+          <h1 className="username">{this.state.connectedUserName}</h1>
           <ul className="navBarList">
             <li className="navBarListItem">
               <div className="icon updateProfileIcon"></div>
@@ -284,7 +278,7 @@ export class QueryChallengeInfoPage extends Component {
                 Description: {this.state.description}
               </div>
               <div className="challengeAttributesItem">
-                Author:{this.getCreatorName}
+                Author: {this.getCreatorName}
               </div>
             </div>
             {this.ChallengeInfoButtons()}
