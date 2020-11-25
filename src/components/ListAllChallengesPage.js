@@ -119,15 +119,19 @@ export class ListAllChallengesPage extends Component {
                       <button
                         class="challengeListButtons"
                         onClick={() => {
-                          this.setState({
-                            selectedChallengeId: challenge._id,
-                            selectedChallengeName: challenge.challengeName,
-                          });
+                          if (challenge.dateClosed == null) {
+                            this.setState({
+                              selectedChallengeId: challenge._id,
+                              selectedChallengeName: challenge.challengeName,
+                            });
 
-                          this.navChallenge();
+                            this.navChallenge();
+                          } else {
+                            alert("Challenge can no longer be solved");
+                          }
                         }}
                       >
-                        {challenge.challengeName} {/* challenge.name */}
+                        {challenge.challengeName}
                       </button>
                     </li>
                   )
