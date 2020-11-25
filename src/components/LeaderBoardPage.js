@@ -5,16 +5,18 @@ import { Redirect } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 import LinkButton from "./LinkButton";
 
-export class ListAllChallengesPage extends Component {
+export class LeaderBoardPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
       username: "",
-      challenges: [],
-      navChall: false,
+      users: [
+        "Big boi - 999999",
+        "Barrack - 2012",
+        "Matumba - 24",
+        "Alex :( - 0",
+      ],
       navReady: false,
-      selectedChallengeId: "",
-      selectedChallengeName: "",
     };
   }
 
@@ -50,10 +52,6 @@ export class ListAllChallengesPage extends Component {
     this.callAPI();
   }
 
-  navChallenge = (event) => {
-    this.setState({ navChall: true });
-  };
-
   logout = (event) => {
     event.preventDefault();
     localStorage.setItem("token", "");
@@ -66,20 +64,6 @@ export class ListAllChallengesPage extends Component {
       return <Redirect to="/login" />;
     }
 
-    if (this.state.navChall) {
-      return (
-        <Redirect
-          to={{
-            pathname: "/challenge_info",
-            state: {
-              challengeId: this.state.selectedChallengeId,
-              challengeName: this.state.selectedChallengeName,
-            },
-          }}
-        />
-      );
-    }
-
     return (
       <div class="massiveContainer">
         <div class="navLeft">
@@ -90,6 +74,12 @@ export class ListAllChallengesPage extends Component {
               <div className="icon updateProfileIcon"></div>
               <LinkButton className="navBarButton" to="/update">
                 Update Profile
+              </LinkButton>
+            </li>
+            <li className="navBarListItem">
+              <div className="icon listChallengesIcon"></div>
+              <LinkButton className="navBarButton" to="/challenges">
+                List Challenges
               </LinkButton>
             </li>
             <li className="navBarListItem">
@@ -109,30 +99,15 @@ export class ListAllChallengesPage extends Component {
         <div class="challengesPageContainer">
           <div class="logoChallengesPage"></div>
           <div class="challengesPageSubcontainer">
-            <h1 class="title">Available Challenges</h1>
+            <h1 class="title">LeaderBoard</h1>
             <ul class="challengesList">
-              {this.state.challenges.map(
-                (challenge) => (
-                  console.log(challenge),
+              {this.state.users.map(
+                //change this part when u add in Backend call
+                (user) => (
+                  console.log(user),
                   (
                     <li class="challengesListItem">
-                      <button
-                        class="challengeListButtons"
-                        onClick={() => {
-                          if (challenge.dateClosed == null) {
-                            this.setState({
-                              selectedChallengeId: challenge._id,
-                              selectedChallengeName: challenge.challengeName,
-                            });
-
-                            this.navChallenge();
-                          } else {
-                            alert("Challenge can no longer be solved");
-                          }
-                        }}
-                      >
-                        {challenge.challengeName}
-                      </button>
+                      <div class="userListLabels">{user}</div>
                     </li>
                   )
                 )
@@ -144,4 +119,4 @@ export class ListAllChallengesPage extends Component {
     );
   }
 }
-export default ListAllChallengesPage;
+export default LeaderBoardPage;
