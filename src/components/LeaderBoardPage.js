@@ -77,6 +77,12 @@ export class LeaderBoardPage extends Component {
               </LinkButton>
             </li>
             <li className="navBarListItem">
+              <div className="icon listChallengesIcon"></div>
+              <LinkButton className="navBarButton" to="/challenges">
+                List Challenges
+              </LinkButton>
+            </li>
+            <li className="navBarListItem">
               <div className="icon createChallengeIcon"></div>
               <LinkButton className="navBarButton" to="/create_challenge">
                 Create Challenge
