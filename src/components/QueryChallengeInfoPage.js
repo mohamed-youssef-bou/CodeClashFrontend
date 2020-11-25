@@ -8,17 +8,12 @@ import LinkButton from "./LinkButton";
 export class QueryChallengeInfoPage extends Component {
   constructor(props) {
     super(props);
-    //console.log(this.props.location.state.creatorId);
     this.state = {
       challengeId: this.props.location.state.challengeId, //obtained from the redirect in listAllChallengePage
-      challengeName: "",
+      challengeName: this.props.location.state.challengeName, //obtained from the redirect in listAllChallengePage
       creatorId: "",
+      author: "",
       description: "",
-      // functionSignature: "",
-      // localTests: [],
-      // hiddenTests: [],
-      // solution: "",
-      // dateCreated: null,
       dateClosed: null,
       connectedUserName: "",
       navBack: false,
@@ -30,20 +25,18 @@ export class QueryChallengeInfoPage extends Component {
   }
 
   callAPI() {
-    fetch("http://localhost:9000/challenges/" + this.state.challengeId)
+    fetch("http://localhost:9000/challenge/" + this.state.challengeName)
       .then((res) => res.json())
       .then((res) =>
         this.setState({
-          challengeName: res.challengeName,
-          creatorId: res.creatorId,
-          description: res.description,
-          dateClosed: res.dateClosed,
-          connectedUserName: "",
+          author: res[1],
+          description: res[2],
         })
       )
       .catch((err) => {
         console.log(err);
       });
+    console.log(this.state);
   }
 
   closeChallenge = (event) => {
@@ -124,7 +117,7 @@ export class QueryChallengeInfoPage extends Component {
   };
 
   componentDidMount() {
-    //this.callAPI(); NO BACKEND METHOD YET FOR QUERYING CHALLENGE INFO
+    this.callAPI();
     this.getConnectedUserName();
   }
 
@@ -145,18 +138,6 @@ export class QueryChallengeInfoPage extends Component {
     this.setState({
       startChallenge: true,
     });
-  }
-
-  getCreatorName() {
-    fetch("http://localhost:9000/" + this.state.creatorId)
-      .then((res) => res.json())
-      .then((res) => {
-        return res.username;
-      })
-      .catch((err) => {
-        console.log(err);
-        return err;
-      });
   }
 
   ChallengeInfoButtons() {
@@ -271,14 +252,14 @@ export class QueryChallengeInfoPage extends Component {
         </div>
         <div className="rightsidePageContainer">
           <div className="logoChallengesPage"></div>
-          <h1 className="title-query">Challenge Name</h1>
+          <h1 className="title-query">{this.state.challengeName}</h1>
           <div className="challengeInfoSubcontainer">
             <div className="challengeAttributesContainer">
               <div className="challengeAttributesItem">
                 Description: {this.state.description}
               </div>
               <div className="challengeAttributesItem">
-                Author: {this.getCreatorName}
+                Author: {this.state.author}
               </div>
             </div>
             {this.ChallengeInfoButtons()}
