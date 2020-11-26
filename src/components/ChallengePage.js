@@ -7,16 +7,13 @@ import LinkButton from "./LinkButton";
 export class ChallengePage extends Component {
     constructor(props) {
         super(props);
-        console.log(this.props.location.state.creatorId);
         this.state = {
             challengeId: this.props.location.state.challengeId,//obtained from the redirect in QueryChallengeInfoPage
-            challengeName: '',
-            creatorId: '',
+            challengeName: this.props.location.state.challengeName,
+            creatorUsername: '',
             description: '',
             functionSignature: '',
             localTests: [],
-            hiddenTests: [],
-            solution: '',
             navReady: false,
             submissionCode: '',
         }
@@ -25,17 +22,14 @@ export class ChallengePage extends Component {
     }
 
     callAPI() {
-
-        fetch('http://localhost:9000/challenges/' + this.state.challengeId)
+        console.log(this.state.challengeName);
+        fetch('http://localhost:9000/challenge/' + this.state.challengeName)
             .then(res => res.json())
             .then(res => this.setState({
-                challengeName: res.challengeName,
-                creatorId: res.creatorId,
-                description: res.description,
-                functionSignature: res.functionSignature,
-                localTests: res.localTests,
-                hiddenTests: res.hiddenTests,
-                solution: res.solution,
+                creatorUsername: res[1],
+                description: res[2],
+                functionSignature: res[4],
+                localTests: res[5],
                 isSubmitted: false,
             }))
             .catch(err => {
@@ -44,7 +38,7 @@ export class ChallengePage extends Component {
     }
 
     componentDidMount() {
-        //this.callAPI(); NO BACKEND METHOD YET FOR QUERYING CHALLENGE INFO, TO BE DONE NEXT SPRINT
+        this.callAPI();
     }
 
     handleExit() {
@@ -83,7 +77,6 @@ export class ChallengePage extends Component {
         }
     }
 
-
     render() {
         if (this.state.navReady) {
             return <Redirect
@@ -99,7 +92,7 @@ export class ChallengePage extends Component {
         return (
             <div className="massiveContainer">
                 <div className="LeftSideChallengeInfo">
-                    <h1 className="title-query">Challenge Name{/*this.state.challengeName*/}</h1>
+                    <h1 className="title-query">{this.state.challengeName}</h1>
                     <div className="LeftchallengeInfoSubcontainer">
                         <div className="SmallLeftchallengeAttributesContainer">
                             <div className="challengePageAttributesItem">
@@ -134,7 +127,7 @@ export class ChallengePage extends Component {
                                 )}
                             </ul>
                             </div>
-                            <div className="challengePageAttributesItem">Author: {this.getCreatorName}</div>
+                            <div className="challengePageAttributesItem">Author: {this.state.creatorUsername}</div>
                             <div className="challengePageAttributesItem">Users Attempted: 1337</div>
                         </div>
                         <div className="queryButtonsContainer">
