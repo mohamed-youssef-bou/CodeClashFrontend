@@ -271,6 +271,10 @@ export class CreateChallengePage extends Component {
               </LinkButton>
             </li>
             <li className="navBarListItem">
+              <div className="icon listChallengesIcon"></div>
+              <LinkButton className="navBarButton" to="/leaderboard">Leaderboard</LinkButton>
+            </li>
+            <li className="navBarListItem">
               <div className="icon logoutIcon"></div>
               <button className="navBarButton" onClick={this.logout}>
                 Logout

@@ -104,6 +104,10 @@ export class UserLandingPage extends Component {
                         <LinkButton className="navBarButton" to="/challenges">List Challenges</LinkButton>
                     </li>
                     <li className="navBarListItem">
+                        <div className="icon listChallengesIcon"></div>
+                        <LinkButton className="navBarButton" to="/leaderboard">Leaderboard</LinkButton>
+                    </li>
+                    <li className="navBarListItem">
                         <div className="icon logoutIcon"></div>
                         <button className="navBarButton" onClick={this.logout}>Logout</button>
                     </li>
