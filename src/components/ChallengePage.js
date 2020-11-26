@@ -22,22 +22,13 @@ export class ChallengePage extends Component {
                 "output": [],
             },
             navReady: false,
-            submissionCode: '',
-            code: '// type your code...',
+            submissionCode: '//input code here',
         }
         this.handleExit = this.handleExit.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleChange = this.handleChange.bind(this);
     }
 
-    editorDidMount(editor, monaco) {
-        console.log('editorDidMount', editor);
-        editor.focus();
-    }
-
-    onChange(newValue, e) {
-        console.log('onChange', newValue, e);
-        // this.state.code = newValue;
-    }
 
     callAPI() {
         console.log(this.state.challengeName);
@@ -63,6 +54,14 @@ export class ChallengePage extends Component {
         this.setState({
             navReady: true,
         });
+    }
+
+    handleChange(event) {
+        event.stopPropagation();
+        this.setState({
+            submissionCode: event.target.value,
+        });
+        // console.log(this.state.submissionCode);
     }
 
     handleSubmit() {
@@ -170,20 +169,8 @@ export class ChallengePage extends Component {
                 </div>
                 <div className="EditorPlaceHolder">
                     <div className="EditorBackground">
-                        <MonacoEditor
-                            // width="800"
-                            // height="600"
-                            language="javascript"
-                            theme="vs-light"
-                            value={code}
-                            options={options}
-                            onChange={this.onChange}
-                            editorDidMount={this.editorDidMount}
-                            // plugins={webpack.plugins}
-                        />
+                        <textarea style={{width: '100%', height: '100%'}} value={this.state.submissionCode} onChange={this.handleChange} />
                     </div>
-                
-
                     <div className="queryButtonsContainer">
                         <button className="backButton" onClick={this.handleSubmit}>
                             <img
