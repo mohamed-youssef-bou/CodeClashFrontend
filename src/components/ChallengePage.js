@@ -5,6 +5,7 @@ import "./ChallengePage.css";
 import LinkButton from "./LinkButton";
 import { render } from 'react-dom';
 import MonacoEditor from 'react-monaco-editor';
+// const webpack = require('./webpack.config');
 
 export class ChallengePage extends Component {
     constructor(props) {
@@ -34,7 +35,8 @@ export class ChallengePage extends Component {
     }
 
     onChange(newValue, e) {
-    console.log('onChange', newValue, e);
+        console.log('onChange', newValue, e);
+        // this.state.code = newValue;
     }
 
     callAPI() {
@@ -169,14 +171,15 @@ export class ChallengePage extends Component {
                 <div className="EditorPlaceHolder">
                     <div className="EditorBackground">
                         <MonacoEditor
-                            width="800"
-                            height="600"
+                            // width="800"
+                            // height="600"
                             language="javascript"
                             theme="vs-light"
                             value={code}
                             options={options}
                             onChange={this.onChange}
                             editorDidMount={this.editorDidMount}
+                            // plugins={webpack.plugins}
                         />
                     </div>
                 
