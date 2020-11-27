@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Styles/UserLoginPage.css";
+import logo from "/Users/maireadmaloney/Documents/ECSE428/ECSE428_G07_Frontend/src/assets/logoEdited.png"
 import { Redirect } from "react-router-dom";
 export class UserLoginPage extends Component {
   constructor(props) {
@@ -72,8 +73,9 @@ export class UserLoginPage extends Component {
     return (
       <div id="loginForm">
         <div class="leftContainer">
-          <div class="logo" />
-          <h1>Login</h1>
+        <img class='img logo_style' src={logo} alt="Logo"/>  
+        <h1 class="text">Login</h1>        
+        <div class="formStyle">
           <form
             className="form-inline"
             class="loginForm"
@@ -105,6 +107,7 @@ export class UserLoginPage extends Component {
               onChange={this.updatePassword}
             ></input>
           </form>
+          </div>
           <div className="loginButtons">
             <button
               type="submit"
@@ -121,7 +124,9 @@ export class UserLoginPage extends Component {
               <img className="right arrow" src={rightArrow} />
             </button>
           </div>
+          
         </div>
+
         <div class="rightContainer" />
       </div>
     );

@@ -29,16 +29,12 @@ section {
 
 }
 
-div {
-  height: 100%;
-  align-items: center;
-}
 
-
-h1 {
-  font-size: 60px;
+.welcome {
+  font-size: 30px;
   align-self: center;
   margin: 0 0 0.75rem 0;
+  text-align: center;
 }
 
 /* Pattern styles */
@@ -69,13 +65,13 @@ h1 {
 
 }
 
-.logo {
+/* .logo {
 width: 700px;
 height: 700px;
 
 align-self: center;
 
-}
+} */
 
 CSS
 
@@ -148,15 +144,16 @@ label {
 }
 
 .logo {
+    size: 100px;
     display: block;
     margin-top: 20px;
-    height: 300px;
-    width: 300px;
+    height: 100px;
+    width: 100px; 
+    background-size: small;
     background: url(./assets/logoEdited.png);
-    background-color: red;
     background-position: center;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: 50px;
 }
 
 .buttonContainer {
@@ -179,6 +176,12 @@ label {
 .arrow {
     height: 80px;
     width: auto;
+}
+
+.logo_style{
+    height: 200px;
+    width: 200px;
+    align-self: center;
 }
 
 .rightBackgroundContainer {

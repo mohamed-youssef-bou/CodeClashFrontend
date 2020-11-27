@@ -36,8 +36,9 @@ class App extends Component {
               return (
                 <div id="container" class="container">
                   <div class="fieldContainer">
-                    <div class="logo"></div>
-                    <h1> Welcome</h1>
+                    <div class="logo">
+                      </div>
+                    <h1 class='welcome vertical-center'> Welcome to CodeClash!</h1>
                     <div class="buttonContainer">
                       <LinkButton to="/login">
                         <img

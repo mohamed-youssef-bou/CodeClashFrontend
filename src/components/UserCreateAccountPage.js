@@ -3,6 +3,8 @@ import "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Styles/UserCreateAccountPage.css";
 import { Redirect } from "react-router-dom";
+import logo from "/Users/maireadmaloney/Documents/ECSE428/ECSE428_G07_Frontend/src/assets/logoEdited.png"
+
 
 export class UserCreateAccountPage extends Component {
   constructor(props) {
@@ -65,8 +67,8 @@ export class UserCreateAccountPage extends Component {
     return (
       <div id="createUserForm">
         <div class="leftContainer">
-          <div class="logo" />
-          <h1>Sign up for an account</h1>
+        <img class='img logo_style' src={logo} alt="Logo"/>          
+          <h1 class="text">Sign up for an account</h1>
           <form className="form-inline" class="signUpForm">
             {/* Username */}
             <label class="signUpLabels" htmlFor="usernameInput">
@@ -77,6 +79,7 @@ export class UserCreateAccountPage extends Component {
               type="name"
               className="form-control"
               id="usernameInput"
+              placeholder="Username"
               value={this.state.username}
               onChange={this.updateUsername}
             ></input>
@@ -90,6 +93,7 @@ export class UserCreateAccountPage extends Component {
               type="email"
               className="form-control"
               id="emailInput"
+              placeholder="Email Address"
               value={this.state.email}
               onChange={this.updateEmail}
             ></input>
@@ -102,6 +106,7 @@ export class UserCreateAccountPage extends Component {
               type="password"
               className="form-control"
               id="passwordInput"
+              placeholder="Password"
               value={this.state.password}
               onChange={this.updatePassword}
             ></input>

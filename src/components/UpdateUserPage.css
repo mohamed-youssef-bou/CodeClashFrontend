@@ -12,11 +12,12 @@ h1 {
 .passwordInput,
 .emailInput {
   margin-bottom: 15px;
-  text-align: center;
-  background-color: white;
-  border-radius: 30px;
-  border: 4px solid var(--clr-accent);
-  color: black;
+    text-align: center;
+    background-color: white;
+    border-radius: 30px;
+    border: 4px solid var(--clr-accent);
+    color:black;
+    width: 80%;
 }
 
 .emailInput {
