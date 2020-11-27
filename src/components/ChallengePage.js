@@ -13,7 +13,10 @@ export class ChallengePage extends Component {
             creatorUsername: '',
             description: '',
             functionSignature: '',
-            localTests: [],
+            localTests: {
+                "input": [],
+                "output": [],
+            },
             navReady: false,
             submissionCode: '',
         }
@@ -84,6 +87,7 @@ export class ChallengePage extends Component {
                     pathname: "/challenge_info",
                     state: {
                         challengeId: this.state.challengeId,
+                        challengeName: this.state.challengeName,
                     },
                 }}
             />
@@ -101,12 +105,12 @@ export class ChallengePage extends Component {
                             <div className="TestChallengeAttribute">
                                 Test Inputs:
                                 <ul className="testList">
-                                    {this.state.localTests.map(
-                                        (test) => (
-                                            console.log(test),
+                                    {this.state.localTests.input.map(
+                                        (input) => (
+                                            console.log(input),
                                                 (
                                                     <li className="testListItem">
-                                                        {test.input}
+                                                        {input}
                                                     </li>
                                                 )
                                         )
@@ -115,12 +119,12 @@ export class ChallengePage extends Component {
                             </div>
                             <div className="TestChallengeAttribute">
                                 Test outputs:<ul className="testList">
-                                {this.state.localTests.map(
-                                    (test) => (
-                                        console.log(test),
+                                {this.state.localTests.output.map(
+                                    (output) => (
+                                        console.log(output),
                                             (
                                                 <li className="testListItem">
-                                                    {test.output}
+                                                    {output}
                                                 </li>
                                             )
                                     )
