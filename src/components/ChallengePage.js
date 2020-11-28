@@ -3,10 +3,14 @@ import jwt_decode from "jwt-decode";
 import { Redirect } from 'react-router-dom';
 import "./ChallengePage.css";
 import LinkButton from "./LinkButton";
+import { render } from 'react-dom';
+import MonacoEditor from 'react-monaco-editor';
+// const webpack = require('./webpack.config');
 
 export class ChallengePage extends Component {
     constructor(props) {
         super(props);
+        // console.log(this.props.location.state.creatorId);
         this.state = {
             challengeId: this.props.location.state.challengeId,//obtained from the redirect in QueryChallengeInfoPage
             challengeName: this.props.location.state.challengeName,
@@ -18,11 +22,13 @@ export class ChallengePage extends Component {
                 "output": [],
             },
             navReady: false,
-            submissionCode: '',
+            submissionCode: '//input code here',
         }
         this.handleExit = this.handleExit.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleChange = this.handleChange.bind(this);
     }
+
 
     callAPI() {
         console.log(this.state.challengeName);
@@ -48,6 +54,14 @@ export class ChallengePage extends Component {
         this.setState({
             navReady: true,
         });
+    }
+
+    handleChange(event) {
+        event.stopPropagation();
+        this.setState({
+            submissionCode: event.target.value,
+        });
+        // console.log(this.state.submissionCode);
     }
 
     handleSubmit() {
@@ -151,7 +165,7 @@ export class ChallengePage extends Component {
                 </div>
                 <div className="EditorPlaceHolder">
                     <div className="EditorBackground">
-
+                        <textarea style={{width: '100%', height: '100%'}} value={this.state.submissionCode} onChange={this.handleChange} />
                     </div>
                     <div className="queryButtonsContainer">
                         <button className="backButton" onClick={this.handleSubmit}>
