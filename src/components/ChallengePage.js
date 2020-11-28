@@ -26,6 +26,7 @@ export class ChallengePage extends Component {
         }
         this.handleExit = this.handleExit.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleResult = this.handleResult.bind(this);
         this.handleChange = this.handleChange.bind(this);
     }
 
@@ -64,6 +65,17 @@ export class ChallengePage extends Component {
         // console.log(this.state.submissionCode);
     }
 
+    async handleResult(res) {
+        if(!res.ok)
+        {
+            alert("There was an error with the response.")
+            return;
+        }
+        let response = await res.json();
+        let score = response[1][0];
+        alert("Tests passing: " + score + "%");
+    }
+
     handleSubmit() {
 
         const _id = jwt_decode(localStorage.getItem("token")).user._id;
@@ -79,20 +91,15 @@ export class ChallengePage extends Component {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(data),
-        }).then(res => {
-            if (res.status === 200) {
-                this.setState({isSubmitted: true});
-            }
-        }).catch(error => {
+        }).then(res =>
+            this.handleResult(res)
+        ).catch(error => {
             console.log(error);
         })
     }
 
-    resultPrompt () {
-        if(this.state.isSubmitted) {
-            //not sure how you (Yoan) want to do the result prompt so just started this method
-        }
-    }
+
+
 
     render() {
         if (this.state.navReady) {
