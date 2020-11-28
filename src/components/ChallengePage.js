@@ -95,10 +95,6 @@ export class ChallengePage extends Component {
     }
 
     render() {
-        const code = this.state.code;
-        const options = {
-            selectOnLineNumbers: true
-        };
         if (this.state.navReady) {
             return <Redirect
                 to={{
