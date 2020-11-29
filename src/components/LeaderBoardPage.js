@@ -10,24 +10,19 @@ export class LeaderBoardPage extends Component {
     super(props);
     this.state = {
       username: "",
-      users: [
-        "Big boi - 999999",
-        "Barrack - 2012",
-        "Matumba - 24",
-        "Alex :( - 0",
-      ],
+      users: [],
       navReady: false,
     };
   }
 
   callAPI() {
-    const _id = jwt_decode(localStorage.getItem("token")).user._id;
+    //const _id = jwt_decode(localStorage.getItem("token")).user._id;
 
-    fetch("http://localhost:9000/challenges/:" + _id)
+    fetch("http://localhost:9000/leaderboard/0")
       .then((res) => res.json())
       .then((res) => {
         this.setState({
-          challenges: res,
+          users: res,
         });
       })
       .catch((err) => {
@@ -36,17 +31,7 @@ export class LeaderBoardPage extends Component {
 
     console.log(this.state.challenges);
 
-    fetch("http://localhost:9000/" + _id)
-      .then((res) => res.json())
-      .then((res) =>
-        this.setState({
-          username: res.username,
-        })
-      )
-      .catch((err) => {
-        console.log(err);
-      });
-  }
+   }
 
   componentDidMount() {
     this.callAPI();
@@ -99,7 +84,7 @@ export class LeaderBoardPage extends Component {
         <div class="challengesPageContainer">
           <div class="logoChallengesPage"></div>
           <div class="challengesPageSubcontainer">
-            <h1 class="title">LeaderBoard</h1>
+            <h1 class="title">Leaderboard</h1>
             <ul class="challengesList">
               {this.state.users.map(
                 //change this part when u add in Backend call
@@ -107,7 +92,7 @@ export class LeaderBoardPage extends Component {
                   console.log(user),
                   (
                     <li class="challengesListItem">
-                      <div class="userListLabels">{user}</div>
+                      <div class="userListLabels">{user.username} - {user.score}</div>
                     </li>
                   )
                 )
