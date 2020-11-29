@@ -11,7 +11,7 @@ export class QueryChallengeInfoPage extends Component {
     this.state = {
       challengeId: this.props.location.state.challengeId, //obtained from the redirect in listAllChallengePage
       challengeName: this.props.location.state.challengeName, //obtained from the redirect in listAllChallengePage
-      creatorId: "",
+      creatorId: this.props.location.state.creatorId,
       author: "",
       description: "",
       dateClosed: null,
@@ -109,8 +109,8 @@ export class QueryChallengeInfoPage extends Component {
   }
 
   checkId = () => {
-
-    if (this.state.connectedUserName === this.state.author) {
+    var _id = jwt_decode(localStorage.getItem("token")).user._id;
+    if (this.state.creatorId === _id) {
       return true;
     }
     return false;

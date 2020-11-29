@@ -15,6 +15,7 @@ export class ListAllChallengesPage extends Component {
       navReady: false,
       selectedChallengeId: "",
       selectedChallengeName: "",
+      selectedCreatorId: "",
     };
   }
 
@@ -74,6 +75,7 @@ export class ListAllChallengesPage extends Component {
             state: {
               challengeId: this.state.selectedChallengeId,
               challengeName: this.state.selectedChallengeName,
+              creatorId: this.state.selectedCreatorId,
             },
           }}
         />
@@ -127,6 +129,7 @@ export class ListAllChallengesPage extends Component {
                             this.setState({
                               selectedChallengeId: challenge._id,
                               selectedChallengeName: challenge.challengeName,
+                              selectedCreatorId: challenge.creatorId,
                             });
 
                             this.navChallenge();

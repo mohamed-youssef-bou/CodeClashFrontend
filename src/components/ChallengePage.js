@@ -17,10 +17,7 @@ export class ChallengePage extends Component {
             creatorUsername: '',
             description: '',
             functionSignature: '',
-            localTests: {
-                "input": [],
-                "output": [],
-            },
+            localTests: [],
             navReady: false,
             submissionCode: '//input code here',
         }
@@ -126,12 +123,12 @@ export class ChallengePage extends Component {
                             <div className="TestChallengeAttribute">
                                 Test Inputs:
                                 <ul className="testList">
-                                    {this.state.localTests.input.map(
-                                        (input) => (
-                                            console.log(input),
+                                    {this.state.localTests.map(
+                                        (test) => (
+                                            console.log(test),
                                                 (
                                                     <li className="testListItem">
-                                                        {input}
+                                                        {test.input}
                                                     </li>
                                                 )
                                         )
@@ -140,12 +137,12 @@ export class ChallengePage extends Component {
                             </div>
                             <div className="TestChallengeAttribute">
                                 Test outputs:<ul className="testList">
-                                {this.state.localTests.output.map(
-                                    (output) => (
-                                        console.log(output),
+                                {this.state.localTests.map(
+                                    (test) => (
+                                        console.log(test),
                                             (
                                                 <li className="testListItem">
-                                                    {output}
+                                                    {test.output}
                                                 </li>
                                             )
                                     )
