@@ -109,8 +109,8 @@ export class QueryChallengeInfoPage extends Component {
   }
 
   checkId = () => {
-    const _id = jwt_decode(localStorage.getItem("token")).user._id;
-    if (_id === this.state.creatorId) {
+
+    if (this.state.connectedUserName === this.state.author) {
       return true;
     }
     return false;
@@ -142,6 +142,7 @@ export class QueryChallengeInfoPage extends Component {
 
   ChallengeInfoButtons() {
     const checkId = this.checkId();
+    console.log(checkId);
     if (checkId) {
       return (
         <div className="queryButtonsContainer">
