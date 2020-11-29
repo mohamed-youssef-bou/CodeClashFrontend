@@ -34,12 +34,12 @@ class App extends Component {
             exact
             render={() => {
               return (
-                <div id="container" class="container">
-                  <div class="fieldContainer">
-                    <div class="logo">
+                <div id="container" className="container">
+                  <div className="fieldContainer">
+                    <div className="logo">
                       </div>
-                    <h1 class='welcome vertical-center'> Welcome to CodeClash!</h1>
-                    <div class="buttonContainer">
+                    <h1 className='welcome vertical-center'> Welcome to CodeClash!</h1>
+                    <div className="buttonContainer">
                       <LinkButton to="/login">
                         <img
                           className="left arrow"
@@ -65,7 +65,7 @@ class App extends Component {
                       </LinkButton>
                     </div>
                   </div>
-                  <div class="rightBackgroundContainer"></div>
+                  <div className="rightBackgroundContainer"></div>
                 </div>
               );
             }}

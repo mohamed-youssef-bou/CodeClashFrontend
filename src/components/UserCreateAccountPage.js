@@ -3,7 +3,7 @@ import "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Styles/UserCreateAccountPage.css";
 import { Redirect } from "react-router-dom";
-import logo from "/Users/maireadmaloney/Documents/ECSE428/ECSE428_G07_Frontend/src/assets/logoEdited.png"
+import logo from "../assets/logoEdited.png"
 
 
 export class UserCreateAccountPage extends Component {
@@ -66,12 +66,12 @@ export class UserCreateAccountPage extends Component {
     const rightArrow = require("../assets/rightArrow.png");
     return (
       <div id="createUserForm">
-        <div class="leftContainer">
-        <img class='img logo_style' src={logo} alt="Logo"/>          
-          <h1 class="text">Sign up for an account</h1>
-          <form className="form-inline" class="signUpForm">
+        <div className="leftContainer">
+        <img className='img logo_style' src={logo} alt="Logo"/>          
+          <h1 className="text">Sign up for an account</h1>
+          <form className="form-inline" className="signUpForm">
             {/* Username */}
-            <label class="signUpLabels" htmlFor="usernameInput">
+            <label className="signUpLabels" htmlFor="usernameInput">
               Username
             </label>
 
@@ -85,7 +85,7 @@ export class UserCreateAccountPage extends Component {
             ></input>
 
             {/* Email */}
-            <label class="signUpLabels" htmlFor="emailInput">
+            <label className="signUpLabels" htmlFor="emailInput">
               Email
             </label>
 
@@ -99,7 +99,7 @@ export class UserCreateAccountPage extends Component {
             ></input>
 
             {/* Password */}
-            <label class="signUpLabels" htmlFor="passwordInput">
+            <label className="signUpLabels" htmlFor="passwordInput">
               Password
             </label>
             <input
@@ -125,7 +125,7 @@ export class UserCreateAccountPage extends Component {
           </div>
           {/* <button type="navigate" className="btn btn-primary mb-2" onPressed={() => this.navLandingPage}>Landing Page </button> */}
         </div>
-        <div class="rightContainer" />
+        <div className="rightContainer" />
       </div>
     );
   }

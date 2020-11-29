@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./UpdateUserPage.css";
 import { Redirect } from "react-router-dom";
 import jwt_decode from "jwt-decode";
-import logo from "/Users/maireadmaloney/Documents/ECSE428/ECSE428_G07_Frontend/src/assets/logoEdited.png"
+import logo from "../assets/logoEdited.png"
 
 
 export class UpdateUserPage extends Component {

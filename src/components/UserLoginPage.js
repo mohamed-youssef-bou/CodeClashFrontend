@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Styles/UserLoginPage.css";
-import logo from "/Users/maireadmaloney/Documents/ECSE428/ECSE428_G07_Frontend/src/assets/logoEdited.png"
+import logo from "../assets/logoEdited.png"
 import { Redirect } from "react-router-dom";
 export class UserLoginPage extends Component {
   constructor(props) {
@@ -72,17 +72,17 @@ export class UserLoginPage extends Component {
     const rightArrow = require("../assets/rightArrow.png");
     return (
       <div id="loginForm">
-        <div class="leftContainer">
-        <img class='img logo_style' src={logo} alt="Logo"/>  
-        <h1 class="text">Login</h1>        
-        <div class="formStyle">
+        <div className="leftContainer">
+        <img className='img logo_style' src={logo} alt="Logo"/>  
+        <h1 className="text">Login</h1>        
+        <div className="formStyle">
           <form
             className="form-inline"
-            class="loginForm"
+            className="loginForm"
             onSubmit={this.handleSubmit}
           >
             {/* Username */}
-            <label class="loginLabels" htmlFor="usernameInput">
+            <label className="loginLabels" htmlFor="usernameInput">
               Username
             </label>
             <input
@@ -95,7 +95,7 @@ export class UserLoginPage extends Component {
             ></input>
 
             {/* Password */}
-            <label class="loginLabels" htmlFor="passwordInput">
+            <label className="loginLabels" htmlFor="passwordInput">
               Password
             </label>
             <input
@@ -127,7 +127,7 @@ export class UserLoginPage extends Component {
           
         </div>
 
-        <div class="rightContainer" />
+        <div className="rightContainer" />
       </div>
     );
   }
