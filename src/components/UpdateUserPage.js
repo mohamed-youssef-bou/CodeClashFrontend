@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import "./UpdateUserPage.css";
 import { Redirect } from "react-router-dom";
 import jwt_decode from "jwt-decode";
+import logo from "../assets/logoEdited.png"
+
 
 export class UpdateUserPage extends Component {
   constructor(props) {
@@ -83,8 +85,8 @@ export class UpdateUserPage extends Component {
     return (
       <div id="container" class="container">
         <div class="fieldContainer">
-          <div class="logo"></div>
-          <h1> Update Account Details</h1>
+          <img class='img logo_style' src={logo} alt="Logo"/>  
+          <h1 class="text">Update Account Details</h1>        
           <label>Username</label>
           <input
             class="usernameInput"
@@ -93,7 +95,10 @@ export class UpdateUserPage extends Component {
             onChange={this.updateUsername}
           ></input>
           <label>Email Address</label>
-          <input class="emailInput" value={this.state.userEmail} />
+          <input class="emailInput" 
+          type="text"
+          value={this.state.userEmail}
+           />
           <label>Password</label>
           <input
             class="passwordInput"

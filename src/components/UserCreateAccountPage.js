@@ -3,6 +3,8 @@ import "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Styles/UserCreateAccountPage.css";
 import { Redirect } from "react-router-dom";
+import logo from "../assets/logoEdited.png"
+
 
 export class UserCreateAccountPage extends Component {
   constructor(props) {
@@ -64,12 +66,12 @@ export class UserCreateAccountPage extends Component {
     const rightArrow = require("../assets/rightArrow.png");
     return (
       <div id="createUserForm">
-        <div class="leftContainer">
-          <div class="logo" />
-          <h1>Sign up for an account</h1>
-          <form className="form-inline" class="signUpForm">
+        <div className="leftContainer">
+        <img className='img logo_style' src={logo} alt="Logo"/>          
+          <h1 className="text">Sign up for an account</h1>
+          <form className="form-inline" className="signUpForm">
             {/* Username */}
-            <label class="signUpLabels" htmlFor="usernameInput">
+            <label className="signUpLabels" htmlFor="usernameInput">
               Username
             </label>
 
@@ -77,12 +79,13 @@ export class UserCreateAccountPage extends Component {
               type="name"
               className="form-control"
               id="usernameInput"
+              placeholder="Username"
               value={this.state.username}
               onChange={this.updateUsername}
             ></input>
 
             {/* Email */}
-            <label class="signUpLabels" htmlFor="emailInput">
+            <label className="signUpLabels" htmlFor="emailInput">
               Email
             </label>
 
@@ -90,18 +93,20 @@ export class UserCreateAccountPage extends Component {
               type="email"
               className="form-control"
               id="emailInput"
+              placeholder="Email Address"
               value={this.state.email}
               onChange={this.updateEmail}
             ></input>
 
             {/* Password */}
-            <label class="signUpLabels" htmlFor="passwordInput">
+            <label className="signUpLabels" htmlFor="passwordInput">
               Password
             </label>
             <input
               type="password"
               className="form-control"
               id="passwordInput"
+              placeholder="Password"
               value={this.state.password}
               onChange={this.updatePassword}
             ></input>
@@ -120,7 +125,7 @@ export class UserCreateAccountPage extends Component {
           </div>
           {/* <button type="navigate" className="btn btn-primary mb-2" onPressed={() => this.navLandingPage}>Landing Page </button> */}
         </div>
-        <div class="rightContainer" />
+        <div className="rightContainer" />
       </div>
     );
   }

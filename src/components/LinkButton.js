@@ -17,7 +17,7 @@ const LinkButton = (props) => {
   } = props
 
   return (
-    <button class='btn-text' size='huge'
+    <button class='btn-text'
       {...rest} // `children` is just another prop!
       onClick={(event) => {
         onClick && onClick(event)
