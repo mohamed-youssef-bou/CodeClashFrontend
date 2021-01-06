@@ -1,4 +1,9 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# CodeClash Frontend
+## About the project
+
+This repository was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and serves as the frontend code base for the CodeClash competitive programming platform. On this platform, users can sign up, take on programming challenges, and create their own to share with others! Each completed challenge increases the programmer's score and raises their position on the global leaderboard. 
+
+Find out more about the Express.js backend server that services this React app in the [repository linked here](https://github.com/mohamed-youssef-bou/CodeClashBackend/).
 
 ## Available Scripts
 
